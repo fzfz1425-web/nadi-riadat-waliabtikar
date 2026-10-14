@@ -1,18 +1,183 @@
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>تواصل معنا | نادي الابتكار وريادة الأعمال</title><link rel="stylesheet" href="assets/style.css"></head>
-<body>
-<header class="header"><a class="logo" href="index.html">نادي <span>الابتكار</span></a><button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button><nav class="nav"><a href="index.html">الرئيسية</a><a href="about.html">عن النادي</a><a href="teams.html">الفرق</a><a href="events.html">الفعاليات</a><a href="projects.html">المشاريع</a><a class="active" href="contact.html">تواصل معنا</a><a class="nav-cta" href="join.html">انضم إلى النادي</a></nav></header>
-<main><section class="page-hero"><span class="eyebrow">نرحب بأفكارك</span><h1>دعنا نبدأ حوارًا</h1><p>للاستفسارات والمقترحات والشراكات والفعاليات، يمكنك تجهيز رسالة من النموذج التالي.</p></section>
-<section class="section"><div class="form-layout"><div><h2>يسعدنا التواصل معك</h2><p>سواء كانت لديك فكرة، أو فرصة مشاركة، أو مقترح لتعاون جديد، شاركنا التفاصيل.</p><div class="card"><div class="icon">✉️</div><h3>البريد الإلكتروني</h3><p>عدّلي عنوان البريد في ملف <code>assets/script.js</code> إلى البريد الرسمي للنادي قبل النشر.</p></div></div>
-<form class="form-card" data-mail-form>
-<label for="name">الاسم</label><input id="name" name="name" required placeholder="اكتب اسمك">
-<label for="email">البريد الإلكتروني</label><input id="email" name="email" type="email" required placeholder="name@example.com">
-<label for="subject">موضوع الرسالة</label><select id="subject" name="subject"><option>استفسار عام</option><option>اقتراح فعالية</option><option>مقترح شراكة</option><option>فكرة مشروع</option></select>
-<label for="message">رسالتك</label><textarea id="message" name="message" rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
-<button class="btn" type="submit">تجهيز رسالة البريد</button><p class="form-status" aria-live="polite"></p><small>لا تُحفظ البيانات في الموقع؛ سيُطلب منك فتح تطبيق البريد لإرسال الرسالة.</small>
-</form></div></section></main>
-<footer class="footer"><a class="logo footer-logo" href="index.html">نادي الابتكار وريادة الأعمال</a><p>معًا نحو أفكار مبتكرة وأثر مستدام.</p><small>© 2026 نادي الابتكار وريادة الأعمال</small></footer><script src="assets/script.js"></script>
-</body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#085982">
+  <meta name="description" content="تواصل مع نادي الابتكار وريادة الأعمال وشارك أفكارك ومقترحاتك.">
 
+  <title>تواصل معنا | نادي الابتكار وريادة الأعمال</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">
+    نادي <span>الابتكار</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="فتح القائمة"
+    aria-controls="main-navigation"
+    aria-expanded="false">
+    <span aria-hidden="true">☰</span>
+  </button>
+
+  <nav class="nav" id="main-navigation" aria-label="التنقل الرئيسي">
+    <a href="index.html">الرئيسية</a>
+    <a href="about.html">عن النادي</a>
+    <a href="teams.html">الفرق</a>
+    <a href="events.html">الفعاليات</a>
+    <a href="projects.html">المشاريع</a>
+    <a class="active" href="contact.html" aria-current="page">تواصل معنا</a>
+    <a class="nav-cta" href="join.html">انضم إلى النادي</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <span class="eyebrow">نرحب بأفكارك</span>
+    <h1 id="page-title">دعنا نبدأ حوارًا</h1>
+    <p>
+      نؤمن بأن الأفكار المبتكرة تبدأ بالحوار.
+      شاركنا استفساراتك ومقترحاتك وفرص التعاون والمشاركة.
+    </p>
+  </section>
+
+  <section class="section" aria-labelledby="contact-title">
+    <div class="form-layout">
+
+      <div>
+        <span class="eyebrow">مساحة للتواصل</span>
+        <h2 id="contact-title">يسعدنا التواصل معك</h2>
+
+        <p>
+          سواء كانت لديك فكرة مشروع، أو مقترح فعالية،
+          أو رغبة في المشاركة في مسابقة أو هاكاثون،
+          يمكنك إرسال رسالتك من خلال النموذج.
+        </p>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">💡</div>
+          <h3>الأفكار والمبادرات</h3>
+          <p>
+            شاركنا أفكارك ومقترحاتك التي يمكن أن تسهم
+            في تطوير بيئة الابتكار وريادة الأعمال.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🏆</div>
+          <h3>المسابقات والهاكاثونات</h3>
+          <p>
+            ساهم في التعريف بالفرص والفعاليات التي
+            يمكن أن تتيح للطلاب اكتساب مهارات جديدة.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🤝</div>
+          <h3>التعاون والشراكات</h3>
+          <p>
+            نرحب بالمقترحات التي تدعم تبادل الخبرات
+            وتوسيع مجالات التعاون والابتكار.
+          </p>
+        </article>
+
+        <div class="notice" role="note">
+          لا يُعد إرسال الرسالة تسجيلًا رسميًا في النادي،
+          ولا يعني اعتماد أي نشاط أو فعالية.
+        </div>
+      </div>
+
+      <form class="form-card" data-mail-form>
+
+        <h2>أرسل رسالتك</h2>
+        <p>يرجى تعبئة الحقول التالية.</p>
+
+        <label for="name">الاسم الكامل</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          maxlength="100"
+          required
+          placeholder="اكتب اسمك">
+
+        <label for="email">البريد الإلكتروني</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          maxlength="150"
+          required
+          placeholder="name@example.com">
+
+        <label for="subject">موضوع الرسالة</label>
+        <select id="subject" name="subject" required>
+          <option value="استفسار عام">استفسار عام</option>
+          <option value="اقتراح فعالية">اقتراح فعالية</option>
+          <option value="فكرة مشروع">فكرة مشروع</option>
+          <option value="مشاركة في مسابقة أو هاكاثون">مشاركة في مسابقة أو هاكاثون</option>
+          <option value="مقترح شراكة">مقترح شراكة</option>
+          <option value="أخرى">أخرى</option>
+        </select>
+
+        <label for="message">تفاصيل الرسالة</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          maxlength="3000"
+          required
+          placeholder="اكتب رسالتك هنا..."></textarea>
+
+        <button class="btn" type="submit">
+          تجهيز رسالة البريد
+        </button>
+
+        <p class="form-status" aria-live="polite"></p>
+
+        <small>
+          لا يحفظ الموقع البيانات ولا يرسلها تلقائيًا.
+          ستحتاج إلى فتح تطبيق البريد وإرسال الرسالة بنفسك.
+        </small>
+
+      </form>
+
+    </div>
+  </section>
+
+  <section class="cta-section" aria-labelledby="join-title">
+    <h2 id="join-title">هل لديك رغبة في المشاركة؟</h2>
+    <p>
+      تعرّف على مجالات النادي وشارك اهتمامك بالابتكار
+      وريادة الأعمال من خلال صفحة الانضمام.
+    </p>
+    <a class="btn btn-light" href="join.html">انضم إلى النادي</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <a class="logo footer-logo" href="index.html">
+    نادي الابتكار وريادة الأعمال
+  </a>
+  <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
+  <small>© 2026 نادي الابتكار وريادة الأعمال</small>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
