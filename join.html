@@ -1,20 +1,251 @@
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>انضم إلى النادي | نادي الابتكار وريادة الأعمال</title><link rel="stylesheet" href="assets/style.css"></head>
-<body>
-<header class="header"><a class="logo" href="index.html">نادي <span>الابتكار</span></a><button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button><nav class="nav"><a href="index.html">الرئيسية</a><a href="about.html">عن النادي</a><a href="teams.html">الفرق</a><a href="events.html">الفعاليات</a><a href="projects.html">المشاريع</a><a href="contact.html">تواصل معنا</a><a class="nav-cta active" href="join.html">انضم إلى النادي</a></nav></header>
-<main><section class="page-hero"><span class="eyebrow">مكانك بيننا</span><h1>فكرتك ومهاراتك تصنع الفرق</h1><p>أخبرنا عن اهتماماتك والمجال الذي ترغب في المشاركة فيه.</p></section>
-<section class="section"><div class="form-layout"><div><h2>ابدأ رحلتك</h2><p>نبحث عن طلاب لديهم الرغبة في التعلم والتعاون والمشاركة في تطوير الأفكار والمبادرات.</p><div class="card"><div class="icon">🤝</div><h3>ماذا يمكنك أن تقدم؟</h3><p>فكرة جديدة، مهارة تقنية، موهبة إعلامية، تنظيم فعاليات، أو الرغبة في التعلم والعمل ضمن فريق.</p></div></div>
-<form class="form-card" data-mail-form>
-<label for="join-name">الاسم</label><input id="join-name" name="name" required placeholder="الاسم الكامل">
-<label for="join-email">البريد الإلكتروني</label><input id="join-email" name="email" type="email" required placeholder="name@example.com">
-<label for="region">المنطقة</label><input id="region" name="region" placeholder="المنطقة أو المدينة">
-<label for="team">الفريق المفضل</label><select id="team" name="team"><option>فريق الابتكار</option><option>فريق ريادة الأعمال</option><option>فريق التقنية</option><option>فريق الإعلام والتسويق</option><option>فريق الفعاليات</option><option>منسقو المناطق</option><option>أرغب في التعرف على الفرق أولًا</option></select>
-<label for="skills">المهارات والاهتمامات</label><textarea id="skills" name="skills" rows="3" placeholder="ما المهارات أو المجالات التي تهمك؟"></textarea>
-<label for="idea">فكرة أو مقترح (اختياري)</label><textarea id="idea" name="idea" rows="3" placeholder="شاركنا فكرتك إن وجدت"></textarea>
-<button class="btn" type="submit">تجهيز طلب الانضمام</button><p class="form-status" aria-live="polite"></p><small>هذا النموذج لا يسجل عضوية ولا يخزن بيانات. يجهز رسالة بريد لإرسالها يدويًا.</small>
-</form></div></section></main>
-<footer class="footer"><a class="logo footer-logo" href="index.html">نادي الابتكار وريادة الأعمال</a><p>معًا نحو أفكار مبتكرة وأثر مستدام.</p><small>© 2026 نادي الابتكار وريادة الأعمال</small></footer><script src="assets/script.js"></script>
-</body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#085982">
+  <meta name="description" content="عبّر عن اهتمامك بالانضمام إلى نادي الابتكار وريادة الأعمال، وشارك مهاراتك وأفكارك ومجالات اهتمامك.">
 
+  <title>انضم إلى النادي | نادي الابتكار وريادة الأعمال</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">
+    نادي <span>الابتكار</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="فتح القائمة"
+    aria-controls="main-navigation"
+    aria-expanded="false">
+    <span aria-hidden="true">☰</span>
+  </button>
+
+  <nav class="nav" id="main-navigation" aria-label="التنقل الرئيسي">
+    <a href="index.html">الرئيسية</a>
+    <a href="about.html">عن النادي</a>
+    <a href="teams.html">الفرق</a>
+    <a href="events.html">الفعاليات</a>
+    <a href="projects.html">المشاريع</a>
+    <a href="contact.html">تواصل معنا</a>
+    <a class="nav-cta active" href="join.html" aria-current="page">انضم إلى النادي</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <span class="eyebrow">مكانك بيننا</span>
+
+    <h1 id="page-title">فكرتك ومهاراتك تصنع الفرق</h1>
+
+    <p>
+      نفتح المجال للطلاب والطالبات المهتمين بالابتكار
+      وريادة الأعمال، والراغبين في التعلم والتعاون
+      وتطوير الأفكار والمشاركة في الفرص والفعاليات.
+    </p>
+  </section>
+
+  <section class="section" aria-labelledby="journey-title">
+    <div class="form-layout">
+
+      <div>
+        <span class="eyebrow">ابدأ رحلتك</span>
+
+        <h2 id="journey-title">لكل شخص مساحة للإبداع</h2>
+
+        <p>
+          لا يشترط أن تكون لديك خبرة سابقة أو مشروع مكتمل.
+          يمكنك التعبير عن اهتماماتك ومهاراتك والمجال
+          الذي ترغب في تعلمه والمساهمة فيه.
+        </p>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">💡</div>
+          <h3>لديك فكرة</h3>
+          <p>
+            شارك تصورك الأولي لمشروع أو مبادرة ترغب
+            في تطويرها بالتعاون مع الآخرين.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧩</div>
+          <h3>لديك مهارة</h3>
+          <p>
+            ساهم بما تعرفه في مجالات التقنية أو التصميم
+            أو الإعلام أو التنظيم أو إدارة المشاريع.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🌐</div>
+          <h3>ترغب في المشاركة عن بُعد</h3>
+          <p>
+            عبّر عن منطقتك واهتماماتك لتسهيل دراسة
+            فرص التعاون وتكوين فرق مناسبة للمشاركة
+            في الفعاليات المحلية عند توفرها.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🏆</div>
+          <h3>تطمح إلى خوض التجارب</h3>
+          <p>
+            أبدِ اهتمامك بالمسابقات والهاكاثونات
+            والورش التي تساعدك على اكتساب الخبرة
+            وتطوير مهاراتك.
+          </p>
+        </article>
+
+        <div class="notice" role="note">
+          هذا النموذج للتعبير عن الاهتمام فقط، ولا يمثل
+          قبولًا أو عضوية رسمية. تخضع الأنشطة والفرق
+          والمشاركات لأي إجراءات اعتماد مطلوبة.
+        </div>
+      </div>
+
+      <form class="form-card" data-mail-form>
+
+        <h2>نموذج الاهتمام بالانضمام</h2>
+
+        <p>
+          عرّفنا بنفسك وبالمجالات التي ترغب في المشاركة فيها.
+        </p>
+
+        <label for="join-name">الاسم الكامل</label>
+        <input
+          id="join-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          maxlength="100"
+          required
+          placeholder="اكتب اسمك الكامل">
+
+        <label for="join-email">البريد الإلكتروني</label>
+        <input
+          id="join-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          maxlength="150"
+          required
+          placeholder="name@example.com">
+
+        <label for="region">المنطقة أو المدينة</label>
+        <input
+          id="region"
+          name="region"
+          type="text"
+          maxlength="100"
+          placeholder="اكتب المنطقة أو المدينة">
+
+        <label for="study-mode">نمط الدراسة</label>
+        <select id="study-mode" name="study_mode" required>
+          <option value="">اختر نمط الدراسة</option>
+          <option value="عن بُعد">عن بُعد</option>
+          <option value="حضوري">حضوري</option>
+          <option value="أفضل عدم التحديد">أفضل عدم التحديد</option>
+        </select>
+
+        <label for="team">المجال المفضل</label>
+        <select id="team" name="team" required>
+          <option value="">اختر المجال الذي يهمك</option>
+          <option value="الابتكار وتطوير الأفكار">الابتكار وتطوير الأفكار</option>
+          <option value="ريادة الأعمال">ريادة الأعمال</option>
+          <option value="التقنية والبرمجة">التقنية والبرمجة</option>
+          <option value="الإعلام والتسويق">الإعلام والتسويق</option>
+          <option value="تنظيم الفعاليات">تنظيم الفعاليات</option>
+          <option value="تنسيق الفرق والمناطق">تنسيق الفرق والمناطق</option>
+          <option value="إدارة المشاريع">إدارة المشاريع</option>
+          <option value="أرغب في التعرف على المجالات أولًا">أرغب في التعرف على المجالات أولًا</option>
+        </select>
+
+        <label for="experience">مستوى الخبرة</label>
+        <select id="experience" name="experience" required>
+          <option value="">اختر مستوى خبرتك</option>
+          <option value="مبتدئ وأرغب في التعلم">مبتدئ وأرغب في التعلم</option>
+          <option value="لدي بعض الخبرة">لدي بعض الخبرة</option>
+          <option value="لدي خبرة سابقة في مشاريع">لدي خبرة سابقة في مشاريع</option>
+        </select>
+
+        <label for="skills">المهارات والاهتمامات</label>
+        <textarea
+          id="skills"
+          name="skills"
+          rows="4"
+          maxlength="1500"
+          placeholder="اذكر المهارات أو المجالات التي تهمك"></textarea>
+
+        <label for="idea">فكرة أو مقترح (اختياري)</label>
+        <textarea
+          id="idea"
+          name="idea"
+          rows="4"
+          maxlength="2000"
+          placeholder="هل لديك فكرة مشروع أو اقتراح للمشاركة؟"></textarea>
+
+        <label for="participation">فرص المشاركة التي تهمك</label>
+        <select id="participation" name="participation">
+          <option value="تطوير المشاريع">تطوير المشاريع</option>
+          <option value="المسابقات والهاكاثونات">المسابقات والهاكاثونات</option>
+          <option value="الورش واللقاءات">الورش واللقاءات</option>
+          <option value="العمل ضمن فريق">العمل ضمن فريق</option>
+          <option value="جميع المجالات السابقة">جميع المجالات السابقة</option>
+        </select>
+
+        <button class="btn" type="submit">
+          تجهيز طلب الاهتمام
+        </button>
+
+        <p class="form-status" aria-live="polite"></p>
+
+        <small>
+          لا تُحفظ البيانات في الموقع ولا تُرسل إلى قاعدة بيانات.
+          عند إعداد البريد الإلكتروني في ملف JavaScript،
+          سيُجهز طلبك لتتمكن من إرساله يدويًا.
+        </small>
+
+      </form>
+
+    </div>
+  </section>
+
+  <section class="cta-section" aria-labelledby="future-title">
+    <h2 id="future-title">ابدأ بفكرة، وتعلّم مع فريق</h2>
+
+    <p>
+      قد تكون مساهمتك القادمة فكرة جديدة أو مهارة تشاركها
+      أو تجربة تمنحك فرصة للنمو والتعلم.
+    </p>
+
+    <a class="btn btn-light" href="projects.html">استكشف مجالات المشاريع</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <a class="logo footer-logo" href="index.html">
+    نادي الابتكار وريادة الأعمال
+  </a>
+
+  <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
+
+  <small>© 2026 نادي الابتكار وريادة الأعمال</small>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
