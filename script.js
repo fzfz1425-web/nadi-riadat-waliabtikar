@@ -1,58 +1,113 @@
-
-const CLUB_EMAIL = "club@example.com";
+const CLUB_EMAIL = “Fzfz1425@gmail.com”;
 
 // تشغيل قائمة التنقل في الجوال
-document.querySelectorAll(".menu-toggle").forEach((button) => {
-  button.addEventListener("click", () => {
-    const navId = button.getAttribute("aria-controls");
-    const nav = document.getElementById(navId);
+document.querySelectorAll(”.menu-toggle”).forEach((button) => {
+button.addEventListener(“click”, () => {
+const navId = button.getAttribute(“aria-controls”);
+const nav = document.getElementById(navId);
 
-    if (!nav) return;
+if (!nav) return;
+const isOpen = nav.classList.toggle("open");
+button.setAttribute("aria-expanded", String(isOpen));
+button.setAttribute(
+  "aria-label",
+  isOpen ? "إغلاق القائمة" : "فتح القائمة"
+);
 
-    const isOpen = nav.classList.toggle("open");
-
-    button.setAttribute("aria-expanded", String(isOpen));
-    button.setAttribute(
-      "aria-label",
-      isOpen ? "إغلاق القائمة" : "فتح القائمة"
-    );
-  });
+});
 });
 
-// تجهيز رسائل التواصل وطلبات الاهتمام بالانضمام
-document.querySelectorAll("[data-mail-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+// عرض رسالة حالة للمستخدم
+function showFormStatus(form, message, type = “success”) {
+const status = form.querySelector(”.form-status”);
 
-    if (!form.reportValidity()) return;
+if (!status) return;
 
-    const data = new FormData(form);
-    const lines = [];
+status.textContent = message;
+status.className = form-status ${type};
+status.setAttribute(“role”, type === “error” ? “alert” : “status”);
+}
 
-    for (const [key, value] of data.entries()) {
-      lines.push(`${key}: ${value}`);
-    }
+// التحقق من الحقول وتجهيز رسائل التواصل وطلبات الانضمام
+document.querySelectorAll(”[data-mail-form]”).forEach((form) => {
+form.addEventListener(“submit”, async (event) => {
+event.preventDefault();
 
-    const subject =
-      form.id === "join-form"
-        ? "طلب اهتمام بالانضمام إلى نادي الابتكار وريادة الأعمال"
-        : (
-            data.get("subject") ||
-            "رسالة إلى نادي الابتكار وريادة الأعمال"
-          );
-
-    const mailto =
-      `mailto:${CLUB_EMAIL}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(lines.join("\n"))}`;
-
-    const status = form.querySelector(".form-status");
-
-    if (status) {
-      status.textContent =
-        "سيتم فتح تطبيق البريد لإكمال إرسال رسالتك.";
-    }
-
-    window.location.href = mailto;
+showFormStatus(form, "", "success");
+if (!form.checkValidity()) {
+  form.reportValidity();
+  showFormStatus(
+    form,
+    "يرجى تعبئة جميع الحقول المطلوبة بشكل صحيح.",
+    "error"
+  );
+  return;
+}
+const submitButton = form.querySelector('[type="submit"]');
+const originalButtonText = submitButton?.textContent;
+if (submitButton) {
+  submitButton.disabled = true;
+  submitButton.textContent = "جارٍ الإرسال...";
+}
+const data = new FormData(form);
+const formData = Object.fromEntries(data.entries());
+const name = String(formData.name || "").trim();
+const email = String(formData.email || "").trim();
+const message = String(formData.message || "").trim();
+if (!name || !email || !message) {
+  showFormStatus(
+    form,
+    "يرجى التأكد من إدخال الاسم والبريد الإلكتروني والرسالة.",
+    "error"
+  );
+  if (submitButton) {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+  return;
+}
+const subject =
+  form.id === "join-form"
+    ? "طلب اهتمام بالانضمام إلى نادي الابتكار وريادة الأعمال"
+    : String(
+        formData.subject || "رسالة إلى نادي الابتكار وريادة الأعمال"
+      ).trim();
+const payload = {
+  recipient: CLUB_EMAIL,
+  subject,
+  data: formData,
+};
+try {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
   });
+  if (!response.ok) {
+    throw new Error("تعذر إرسال الطلب.");
+  }
+  form.reset();
+  showFormStatus(
+    form,
+    "تم إرسال رسالتك بنجاح. شكرًا لتواصلك معنا.",
+    "success"
+  );
+} catch (error) {
+  console.error("Form submission error:", error);
+  showFormStatus(
+    form,
+    "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقًا.",
+    "error"
+  );
+} finally {
+  if (submitButton) {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+}
+
+});
 });
