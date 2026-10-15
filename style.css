@@ -234,4 +234,31 @@ button, .btn { cursor: pointer; }
   .form-card { padding: 20px; }
   .cta-section { padding: 42px 5%; }
   .cta-section h2 { font-size: 1.7rem; }
+/* شعارات الجامعة والنادي أعلى الصفحة */
+.top-logos {
+  direction: rtl;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 5%;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DCEBF2;
+}
+.top-logos img {
+  display: block;
+  width: 90px;
+  height: 70px;
+  object-fit: contain;
+}
+/* حجم مناسب للجوال */
+@media (max-width: 600px) {
+  .top-logos {
+    padding: 8px 16px;
+  }
+  .top-logos img {
+    width: 68px;
+    height: 55px;
+  }
 }
