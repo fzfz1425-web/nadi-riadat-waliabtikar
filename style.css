@@ -267,5 +267,26 @@ button, .btn { cursor: pointer; }
     width: 68px;
     height: 55px;
   }
+
+/* إظهار اسم النادي كاملًا في الشريط العلوي */
+.header .logo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  white-space: normal;
+  flex-shrink: 0;
+  max-width: 100%;
+  line-height: 1.6;
 }
+
+@media (max-width: 1000px) {
+  .header {
+    gap: 12px;
+  }
+
+  .header .logo {
+    max-width: calc(100% - 60px);
+    overflow-wrap: anywhere;
+  }
+}
+
 
