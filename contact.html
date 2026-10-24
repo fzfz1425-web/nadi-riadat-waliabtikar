@@ -3,182 +3,704 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#085982">
   <meta name="description" content="تواصل مع نادي الابتكار وريادة الأعمال وشارك أفكارك ومقترحاتك.">
-
   <title>تواصل معنا | نادي الابتكار وريادة الأعمال</title>
-
   <link rel="stylesheet" href="style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #085982;
+      --blue: #2DAFEB;
+      --page: #f3f9fc;
+      --white: #fff;
+      --text: #243746;
+      --muted: #657786;
+      --border: #e1edf3;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Tajawal', Tahoma, Arial, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .top-logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 5%;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-logos img {
+      width: 82px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 5%;
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      padding: 0;
+      border: 1px solid var(--blue);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--navy);
+      font-size: 22px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--page);
+      color: var(--navy);
+      font-size: 23px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+
+    .nav-links .nav-cta {
+      background: var(--navy);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 10px;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: var(--blue);
+      color: white;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(45,175,235,.35), transparent 28%),
+        linear-gradient(135deg, #085982, #1688b7);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 30px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(29px, 5vw, 44px);
+      line-height: 1.5;
+      margin: 17px 0;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #edfaff;
+      font-size: 17px;
+    }
+
+    .content-section { padding: 48px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--navy);
+      background: #e5f7ff;
+      border-color: #d1eefb;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      margin: 10px 0 7px;
+      font-size: clamp(23px, 3vw, 30px);
+      line-height: 1.5;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .intro-panel {
+      padding: 8px 0;
+    }
+
+    .intro-panel > h2 {
+      color: var(--navy);
+      font-size: 27px;
+      line-height: 1.5;
+      margin: 12px 0;
+    }
+
+    .intro-panel > p {
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .info-card {
+      padding: 20px;
+      margin-bottom: 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 5px 18px rgba(8,89,130,.04);
+    }
+
+    .info-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 8px;
+      border-radius: 14px;
+      background: #e4f6fd;
+      font-size: 25px;
+    }
+
+    .info-card h3 {
+      color: var(--navy);
+      margin: 5px 0;
+      font-size: 18px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .notice {
+      padding: 15px 17px;
+      border-right: 4px solid var(--blue);
+      border-radius: 10px;
+      background: #e8f6fc;
+      color: #24536a;
+      font-size: 13px;
+    }
+
+    .form-card {
+      padding: 27px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(8,89,130,.07);
+    }
+
+    .form-card h2 {
+      color: var(--navy);
+      font-size: 25px;
+      margin: 0 0 4px;
+    }
+
+    .form-card > p {
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .form-card label {
+      display: block;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      margin: 15px 0 6px;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--page);
+      color: var(--text);
+      outline: none;
+    }
+
+    .form-card input:focus,
+    .form-card select:focus,
+    .form-card textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(45,175,235,.13);
+    }
+
+    .form-card textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-top: 20px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+      text-align: center;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .form-status {
+      margin: 12px 0;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .form-card small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(125deg, #063f5c, #085982 65%, #1688b7);
+      color: white;
+      padding: 48px 20px;
+    }
+
+    .cta h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      margin: 0 0 8px;
+    }
+
+    .cta p {
+      color: #e5f5fc;
+      max-width: 680px;
+      margin: 0 auto 22px;
+    }
+
+    .btn-light {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      margin-top: 0;
+      background: white;
+      color: var(--navy);
+    }
+
+    footer {
+      padding: 25px 5%;
+      text-align: center;
+      background: #063f5c;
+      color: #e5f5fc;
+      font-size: 13px;
+    }
+
+    footer p { margin: 5px 0; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin: 16px 0;
+    }
+
+    .footer-links a:hover { color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px;
+        background: var(--page);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .top-logos { padding: 8px 16px; }
+
+      .top-logos img {
+        width: 66px;
+        height: 53px;
+      }
+
+      .site-header { padding: 11px 5%; }
+
+      .brand {
+        max-width: 58%;
+        font-size: 15px;
+      }
+
+      .header-actions { gap: 5px; }
+
+      .theme-toggle,
+      .menu-toggle {
+        width: 39px;
+        height: 39px;
+        min-width: 39px;
+      }
+
+      .hero { padding: 43px 18px; }
+      .hero p { font-size: 15px; }
+      .content-section { padding: 34px 0; }
+      .form-card { padding: 20px; }
+      .cta { padding: 40px 18px; }
+    }
+
+    html[data-theme="dark"] {
+      --page: #101923;
+      --white: #172532;
+      --text: #edf4fa;
+      --muted: #b7c8d5;
+      --border: #344b5e;
+    }
+
+    html[data-theme="dark"] body {
+      background: var(--page);
+      color: var(--text);
+    }
+
+    html[data-theme="dark"] .top-logos,
+    html[data-theme="dark"] .site-header {
+      background: #172532;
+    }
+
+    html[data-theme="dark"] .brand,
+    html[data-theme="dark"] .intro-panel > h2,
+    html[data-theme="dark"] .info-card h3,
+    html[data-theme="dark"] .form-card h2,
+    html[data-theme="dark"] .form-card label {
+      color: #edf4fa;
+    }
+
+    html[data-theme="dark"] .info-card,
+    html[data-theme="dark"] .form-card {
+      background: #1b2b3a;
+      border-color: #344b5e;
+    }
+
+    html[data-theme="dark"] .info-icon { background: #263f50; }
+
+    html[data-theme="dark"] .notice {
+      background: #203b4d;
+      color: #d8effa;
+    }
+
+    html[data-theme="dark"] .form-card input,
+    html[data-theme="dark"] .form-card select,
+    html[data-theme="dark"] .form-card textarea {
+      background: #14212d;
+      color: #edf4fa;
+      border-color: #344b5e;
+    }
+
+    html[data-theme="dark"] .nav-links {
+      background: #172532;
+      border-color: #344b5e;
+    }
+
+    html[data-theme="dark"] .nav-links a { color: #edf4fa; }
+
+    html[data-theme="dark"] .nav-links a.active,
+    html[data-theme="dark"] .nav-links a:hover {
+      color: #6acbfa;
+    }
+
+    html[data-theme="dark"] .menu-toggle {
+      background: #203b4d;
+      color: #edf4fa;
+      border-color: #344b5e;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="top-logos">
+    <img src="IMG_0364.JPG" alt="شعار الجامعة الإسلامية بمنيسوتا">
+    <img src="IMG_1948.JPG" alt="شعار نادي الابتكار وريادة الأعمال">
+  </div>
 
-<header class="header">
-  <a class="logo" href="index.html">
-    نادي <span>الابتكار</span>
-  </a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">نادي الابتكار وريادة الأعمال</a>
 
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="فتح القائمة"
-    aria-controls="main-navigation"
-    aria-expanded="false">
-    <span aria-hidden="true">☰</span>
-  </button>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button"
+          aria-label="التبديل إلى الوضع الداكن"
+          title="تغيير المظهر">🌙</button>
 
-  <nav class="nav" id="main-navigation" aria-label="التنقل الرئيسي">
-    <a href="index.html">الرئيسية</a>
-    <a href="about.html">عن النادي</a>
-    <a href="teams.html">الفرق</a>
-    <a href="events.html">الفعاليات</a>
-    <a href="projects.html">المشاريع</a>
-    <a class="active" href="contact.html" aria-current="page">تواصل معنا</a>
-    <a class="nav-cta" href="join.html">انضم إلى النادي</a>
-  </nav>
-</header>
-
-<main>
-
-  <section class="page-hero" aria-labelledby="page-title">
-    <span class="eyebrow">نرحب بأفكارك</span>
-    <h1 id="page-title">دعنا نبدأ حوارًا</h1>
-    <p>
-      نؤمن بأن الأفكار المبتكرة تبدأ بالحوار.
-      شاركنا استفساراتك ومقترحاتك وفرص التعاون والمشاركة.
-    </p>
-  </section>
-
-  <section class="section" aria-labelledby="contact-title">
-    <div class="form-layout">
-
-      <div>
-        <span class="eyebrow">مساحة للتواصل</span>
-        <h2 id="contact-title">يسعدنا التواصل معك</h2>
-
-        <p>
-          سواء كانت لديك فكرة مشروع، أو مقترح فعالية،
-          أو رغبة في المشاركة في مسابقة أو هاكاثون،
-          يمكنك إرسال رسالتك من خلال النموذج.
-        </p>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">💡</div>
-          <h3>الأفكار والمبادرات</h3>
-          <p>
-            شاركنا أفكارك ومقترحاتك التي يمكن أن تسهم
-            في تطوير بيئة الابتكار وريادة الأعمال.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">🏆</div>
-          <h3>المسابقات والهاكاثونات</h3>
-          <p>
-            ساهم في التعريف بالفرص والفعاليات التي
-            يمكن أن تتيح للطلاب اكتساب مهارات جديدة.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true">🤝</div>
-          <h3>التعاون والشراكات</h3>
-          <p>
-            نرحب بالمقترحات التي تدعم تبادل الخبرات
-            وتوسيع مجالات التعاون والابتكار.
-          </p>
-        </article>
-
-        <div class="notice" role="note">
-          لا يُعد إرسال الرسالة تسجيلًا رسميًا في النادي،
-          ولا يعني اعتماد أي نشاط أو فعالية.
-        </div>
+        <button class="menu-toggle" type="button"
+          aria-label="فتح قائمة التنقل"
+          aria-controls="main-nav"
+          aria-expanded="false">☰</button>
       </div>
 
-      <form class="form-card" data-mail-form>
-
-        <h2>أرسل رسالتك</h2>
-        <p>يرجى تعبئة الحقول التالية.</p>
-
-        <label for="name">الاسم الكامل</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          autocomplete="name"
-          maxlength="100"
-          required
-          placeholder="اكتب اسمك">
-
-        <label for="email">البريد الإلكتروني</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          maxlength="150"
-          required
-          placeholder="name@example.com">
-
-        <label for="subject">موضوع الرسالة</label>
-        <select id="subject" name="subject" required>
-          <option value="استفسار عام">استفسار عام</option>
-          <option value="اقتراح فعالية">اقتراح فعالية</option>
-          <option value="فكرة مشروع">فكرة مشروع</option>
-          <option value="مشاركة في مسابقة أو هاكاثون">مشاركة في مسابقة أو هاكاثون</option>
-          <option value="مقترح شراكة">مقترح شراكة</option>
-          <option value="أخرى">أخرى</option>
-        </select>
-
-        <label for="message">تفاصيل الرسالة</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="6"
-          maxlength="3000"
-          required
-          placeholder="اكتب رسالتك هنا..."></textarea>
-
-        <button class="btn" type="submit">
-          تجهيز رسالة البريد
-        </button>
-
-        <p class="form-status" aria-live="polite"></p>
-
-        <small>
-          لا يحفظ الموقع البيانات ولا يرسلها تلقائيًا.
-          ستحتاج إلى فتح تطبيق البريد وإرسال الرسالة بنفسك.
-        </small>
-
-      </form>
-
+      <nav class="nav-links" id="main-nav" aria-label="القائمة الرئيسية">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">عن النادي</a>
+        <a href="teams.html">الفرق</a>
+        <a href="events.html">الفعاليات</a>
+        <a href="projects.html">المشاريع</a>
+        <a class="active" href="contact.html" aria-current="page">تواصل معنا</a>
+        <a class="nav-cta" href="join.html">انضم إلى النادي</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="cta-section" aria-labelledby="join-title">
-    <h2 id="join-title">هل لديك رغبة في المشاركة؟</h2>
-    <p>
-      تعرّف على مجالات النادي وشارك اهتمامك بالابتكار
-      وريادة الأعمال من خلال صفحة الانضمام.
-    </p>
-    <a class="btn btn-light" href="join.html">انضم إلى النادي</a>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">نرحب بأفكارك</span>
+        <h1>دعنا نبدأ حوارًا</h1>
+        <p>
+          نؤمن بأن الأفكار المبتكرة تبدأ بالحوار.
+          شاركنا استفساراتك ومقترحاتك وفرص التعاون والمشاركة.
+        </p>
+      </div>
+    </section>
 
-</main>
+    <section class="content-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">مساحة للتواصل</span>
+          <h2>يسعدنا التواصل معك</h2>
+          <p>اختر موضوع رسالتك وأرسل لنا استفسارك أو مقترحك.</p>
+        </div>
 
-<footer class="footer">
-  <a class="logo footer-logo" href="index.html">
-    نادي الابتكار وريادة الأعمال
-  </a>
-  <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
-  <small>© 2026 نادي الابتكار وريادة الأعمال</small>
-</footer>
+        <div class="contact-layout">
+          <div class="intro-panel">
+            <h2>كيف يمكننا التعاون؟</h2>
+            <p>
+              سواء كانت لديك فكرة مشروع، أو مقترح فعالية،
+              أو رغبة في المشاركة في مسابقة أو هاكاثون،
+              يمكنك إرسال رسالتك من خلال النموذج.
+            </p>
 
-<script src="script.js"></script>
+            <article class="info-card">
+              <div class="info-icon" aria-hidden="true">💡</div>
+              <h3>الأفكار والمبادرات</h3>
+              <p>
+                شاركنا أفكارك ومقترحاتك التي يمكن أن تسهم
+                في تطوير بيئة الابتكار وريادة الأعمال.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="info-icon" aria-hidden="true">🏆</div>
+              <h3>المسابقات والهاكاثونات</h3>
+              <p>
+                ساهم في التعريف بالفرص والفعاليات التي
+                يمكن أن تتيح للطلاب اكتساب مهارات جديدة.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="info-icon" aria-hidden="true">🤝</div>
+              <h3>التعاون والشراكات</h3>
+              <p>
+                نرحب بالمقترحات التي تدعم تبادل الخبرات
+                وتوسيع مجالات التعاون والابتكار.
+              </p>
+            </article>
+
+            <div class="notice" role="note">
+              لا يُعد إرسال الرسالة تسجيلًا رسميًا في النادي،
+              ولا يعني اعتماد أي نشاط أو فعالية.
+            </div>
+          </div>
+
+          <form class="form-card" data-mail-form>
+            <h2>أرسل رسالتك</h2>
+            <p>يرجى تعبئة الحقول التالية.</p>
+
+            <label for="contact-name">الاسم الكامل</label>
+            <input id="contact-name" name="name" type="text"
+              autocomplete="name" maxlength="100" required
+              placeholder="اكتب اسمك">
+
+            <label for="contact-email">البريد الإلكتروني</label>
+            <input id="contact-email" name="email" type="email"
+              autocomplete="email" maxlength="150" required
+              placeholder="name@example.com">
+
+            <label for="contact-subject">موضوع الرسالة</label>
+            <select id="contact-subject" name="subject" required>
+              <option value="استفسار عام">استفسار عام</option>
+              <option value="اقتراح فعالية">اقتراح فعالية</option>
+              <option value="فكرة مشروع">فكرة مشروع</option>
+              <option value="مشاركة في مسابقة أو هاكاثون">مشاركة في مسابقة أو هاكاثون</option>
+              <option value="مقترح شراكة">مقترح شراكة</option>
+              <option value="أخرى">أخرى</option>
+            </select>
+
+            <label for="contact-message">تفاصيل الرسالة</label>
+            <textarea id="contact-message" name="message"
+              rows="6" maxlength="3000" required
+              placeholder="اكتب رسالتك هنا..."></textarea>
+
+            <button class="btn" type="submit">تجهيز رسالة البريد</button>
+
+            <p class="form-status" aria-live="polite"></p>
+
+            <small>
+              لا يحفظ الموقع البيانات ولا يرسلها تلقائيًا.
+              ستحتاج إلى فتح تطبيق البريد وإرسال الرسالة بنفسك.
+            </small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>هل لديك رغبة في المشاركة؟</h2>
+        <p>
+          تعرّف على مجالات النادي وشارك اهتمامك بالابتكار
+          وريادة الأعمال من خلال صفحة الانضمام.
+        </p>
+        <a class="btn btn-light" href="join.html">انضم إلى النادي</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>نادي الابتكار وريادة الأعمال</strong>
+    <p>الجامعة الإسلامية بمنيسوتا</p>
+    <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
+
+    <div class="footer-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">عن النادي</a>
+      <a href="events.html">الفعاليات</a>
+      <a href="projects.html">المشاريع</a>
+      <a href="join.html">انضم إلينا</a>
+    </div>
+
+    <small>© 2026 نادي الابتكار وريادة الأعمال</small>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
