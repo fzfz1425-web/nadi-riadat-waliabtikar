@@ -741,3 +741,424 @@ button,
     transition-duration: .01ms !important;
   }
 }
+
+/* =========================================
+   تطوير الصفحة الرئيسية — نادي الابتكار
+========================================= */
+
+/* تحسين الانتقالات العامة */
+.header,
+.top-logos,
+.card,
+.hero-image,
+.theme-toggle {
+  transition: background-color .25s ease, color .25s ease,
+              border-color .25s ease, box-shadow .25s ease;
+}
+
+/* زر تغيير المظهر */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--light);
+  color: var(--dark);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--blue);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ترتيب عناصر الرأس */
+.header {
+  gap: 14px;
+}
+
+.header .logo {
+  flex: 0 1 auto;
+}
+
+.nav {
+  row-gap: 10px;
+}
+
+/* الواجهة الرئيسية */
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 78px;
+  padding-bottom: 78px;
+  background:
+    radial-gradient(ellipse at 8% 10%, rgba(45,175,235,.13), transparent 35%),
+    linear-gradient(135deg, #F2FAFD 0%, #FFFFFF 72%);
+}
+
+.home-hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.home-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid rgba(45,175,235,.25);
+  border-radius: 30px;
+  background: rgba(45,175,235,.09);
+  font-size: .95rem;
+}
+
+.home-hero h1 {
+  max-width: 760px;
+  letter-spacing: -.7px;
+}
+
+.home-hero .hero-content > p {
+  max-width: 600px;
+  font-size: 1.12rem;
+  line-height: 2;
+}
+
+.home-hero .hero-image {
+  min-height: 420px;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,.35);
+  box-shadow: 0 25px 65px rgba(8,89,130,.18);
+}
+
+.home-hero .hero-image img {
+  height: 420px;
+}
+
+/* الزخارف */
+.hero-orbit {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  border: 1px solid rgba(255,255,255,.38);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 240px;
+  height: 240px;
+  top: 8%;
+  right: 8%;
+}
+
+.orbit-two {
+  width: 155px;
+  height: 155px;
+  bottom: 8%;
+  left: 9%;
+}
+
+.hero-symbol {
+  position: absolute;
+  z-index: 2;
+  top: 24px;
+  left: 25px;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 20px;
+  background: rgba(255,255,255,.16);
+  color: white;
+  font-size: 1.8rem;
+  backdrop-filter: blur(8px);
+}
+
+/* بطاقات الأقسام الرئيسية */
+.home-intro,
+.home-opportunities,
+.home-journey {
+  position: relative;
+}
+
+.home-card,
+.opportunity-card,
+.journey-card {
+  height: 100%;
+  border-radius: 22px;
+  background: var(--white);
+}
+
+.home-card:hover,
+.opportunity-card:hover,
+.journey-card:hover {
+  border-color: rgba(45,175,235,.45);
+  transform: translateY(-5px);
+}
+
+.home-card .icon,
+.opportunity-card .icon {
+  display: inline-grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 17px;
+  background: rgba(45,175,235,.12);
+  color: var(--dark);
+}
+
+.home-card h3,
+.opportunity-card h3,
+.journey-card h3 {
+  margin-top: 14px;
+}
+
+.home-card p,
+.opportunity-card p,
+.journey-card p {
+  line-height: 1.9;
+}
+
+/* قسم الفرص */
+.home-opportunities {
+  background:
+    radial-gradient(circle at 95% 5%, rgba(45,175,235,.09), transparent 30%),
+    var(--light);
+}
+
+.opportunity-card {
+  border-top: 3px solid var(--blue);
+}
+
+/* خطوات رحلة النادي */
+.home-journey .journey-card {
+  position: relative;
+  padding-top: 30px;
+}
+
+.journey-number {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: var(--dark);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  box-shadow: 0 8px 18px rgba(8,89,130,.16);
+}
+
+/* الدعوة الختامية */
+.home-cta {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(45,175,235,.28), transparent 30%),
+    linear-gradient(125deg, #064565, #085982 60%, #0B709F);
+}
+
+.home-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-cta .btn-light {
+  border: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+/* =========================================
+   الوضع الداكن
+========================================= */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #E8F2F8;
+  --muted: #B1C5D2;
+  --light: #102B3A;
+  --white: #0B1E29;
+  --border: #294655;
+  --shadow: 0 12px 35px rgba(0,0,0,.22);
+}
+
+html[data-theme="dark"] body {
+  background: #0B1E29;
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .top-logos,
+html[data-theme="dark"] .header {
+  background: rgba(11,30,41,.97);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .logo,
+html[data-theme="dark"] .nav a,
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .section h2,
+html[data-theme="dark"] .card h3,
+html[data-theme="dark"] .text-link,
+html[data-theme="dark"] .page-hero h1 {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .nav a:hover,
+html[data-theme="dark"] .nav a.active,
+html[data-theme="dark"] .logo span {
+  color: var(--blue);
+}
+
+html[data-theme="dark"] .nav .nav-cta {
+  background: var(--blue);
+  color: #061C28;
+}
+
+html[data-theme="dark"] .menu-toggle,
+html[data-theme="dark"] .theme-toggle {
+  background: #173847;
+  color: #E8F2F8;
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .home-hero,
+html[data-theme="dark"] .page-hero {
+  background:
+    radial-gradient(ellipse at 8% 10%, rgba(45,175,235,.10), transparent 35%),
+    linear-gradient(135deg, #102B3A, #0B1E29 75%);
+}
+
+html[data-theme="dark"] .home-hero h1,
+html[data-theme="dark"] .page-hero h1,
+html[data-theme="dark"] .home-card h3,
+html[data-theme="dark"] .opportunity-card h3,
+html[data-theme="dark"] .journey-card h3 {
+  color: #E8F7FF;
+}
+
+html[data-theme="dark"] .home-card,
+html[data-theme="dark"] .opportunity-card,
+html[data-theme="dark"] .journey-card,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .form-card {
+  background: #102B3A;
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .soft,
+html[data-theme="dark"] .home-opportunities {
+  background: #0E2634;
+}
+
+html[data-theme="dark"] .btn-outline {
+  background: #102B3A;
+  color: #E8F2F8;
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .tag,
+html[data-theme="dark"] .notice {
+  background: #173847;
+  color: #DDF5FF;
+}
+
+html[data-theme="dark"] .form-card input,
+html[data-theme="dark"] .form-card textarea,
+html[data-theme="dark"] .form-card select {
+  background: #0B1E29;
+  color: #E8F2F8;
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .form-card label,
+html[data-theme="dark"] .form-status {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .image-note {
+  background: #102B3A;
+  color: #E8F2F8;
+  border: 1px solid var(--border);
+}
+
+/* =========================================
+   تحسينات الآيباد والجوال
+========================================= */
+
+@media (max-width: 1000px) {
+  .home-hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .home-hero .hero-image,
+  .home-hero .hero-image img {
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .header .logo {
+    flex: 1 1 180px;
+  }
+
+  .theme-toggle {
+    margin-inline-start: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-hero {
+    padding-top: 35px;
+    padding-bottom: 38px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .home-hero .hero-content > p {
+    font-size: 1rem;
+  }
+
+  .home-hero .hero-image,
+  .home-hero .hero-image img {
+    min-height: 260px;
+    height: 260px;
+  }
+
+  .hero-symbol {
+    width: 48px;
+    height: 48px;
+    top: 15px;
+    left: 15px;
+    font-size: 1.4rem;
+  }
+
+  .home-card,
+  .opportunity-card,
+  .journey-card {
+    border-radius: 17px;
+  }
+
+  .journey-number {
+    width: 43px;
+    height: 43px;
+  }
+
+  html[data-theme="dark"] .nav {
+    background: #0B1E29;
+    border-radius: 12px;
+    padding: 8px;
+  }
+}
