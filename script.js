@@ -1,39 +1,41 @@
 
-/* =====================================
+/* =========================================
    نادي الابتكار وريادة الأعمال
-===================================== */
+   ملف JavaScript المشترك لجميع الصفحات
+========================================= */
 
 const CLUB_EMAIL = "Fzfz1425@gmail.com";
 
-/* 1. تنسيقات الوضع الفاتح والداكن */
+/* 1. الوضع الفاتح والداكن */
 
-(function addThemeStyles() {
-  if (document.getElementById("club-theme-styles")) return;
+(function setupTheme() {
+  const root = document.documentElement;
 
   const style = document.createElement("style");
-  style.id = "club-theme-styles";
-
+  style.id = "club-theme-global-style";
   style.textContent = `
     .theme-toggle {
       display: inline-flex !important;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      min-width: 42px;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
       padding: 0 !important;
+      margin: 5px !important;
       border: 1px solid #2DAFEB !important;
       border-radius: 50% !important;
       background: transparent !important;
       color: inherit !important;
       font-size: 22px !important;
-      line-height: 1;
-      cursor: pointer;
-      flex-shrink: 0;
+      line-height: 1 !important;
+      cursor: pointer !important;
+      flex-shrink: 0 !important;
+      z-index: 1000 !important;
     }
 
     .theme-toggle:hover {
-      background: rgba(45, 175, 235, .12) !important;
+      background: rgba(45,175,235,.15) !important;
     }
 
     html[data-theme="dark"] body {
@@ -44,8 +46,7 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
     html[data-theme="dark"] header,
     html[data-theme="dark"] .header,
     html[data-theme="dark"] .site-header,
-    html[data-theme="dark"] .nav,
-    html[data-theme="dark"] .nav-links {
+    html[data-theme="dark"] .nav-wrap {
       background-color: #172532 !important;
       color: #edf4fa !important;
     }
@@ -53,18 +54,17 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
     html[data-theme="dark"] main,
     html[data-theme="dark"] section,
     html[data-theme="dark"] .section,
-    html[data-theme="dark"] .page-hero,
     html[data-theme="dark"] .hero,
-    html[data-theme="dark"] .home-intro,
-    html[data-theme="dark"] .home-journey {
+    html[data-theme="dark"] .page-hero {
       color: #edf4fa;
     }
 
     html[data-theme="dark"] .card,
-    html[data-theme="dark"] .home-card,
+    html[data-theme="dark"] .project-card,
+    html[data-theme="dark"] .team-card,
+    html[data-theme="dark"] .event-card,
     html[data-theme="dark"] .opportunity-card,
-    html[data-theme="dark"] .journey-card,
-    html[data-theme="dark"] .notice {
+    html[data-theme="dark"] .journey-card {
       background: #1b2b3a !important;
       color: #edf4fa !important;
       border-color: #344b5e !important;
@@ -79,8 +79,15 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
       color: inherit;
     }
 
-    html[data-theme="dark"] a:not(.button):not(.btn) {
-      color: #70d2ff;
+    html[data-theme="dark"] .soft,
+    html[data-theme="dark"] .home-opportunities {
+      background: #14212d !important;
+    }
+
+    html[data-theme="dark"] footer,
+    html[data-theme="dark"] .footer {
+      background: #0b131b !important;
+      color: #edf4fa !important;
     }
 
     html[data-theme="dark"] input,
@@ -91,44 +98,17 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
       border-color: #496276 !important;
     }
 
-    html[data-theme="dark"] .soft,
-    html[data-theme="dark"] .home-opportunities {
-      background: #14212d !important;
-    }
-
-    html[data-theme="dark"] .footer,
-    html[data-theme="dark"] footer {
-      background: #0b131b !important;
+    html[data-theme="dark"] .nav a,
+    html[data-theme="dark"] .nav-links a {
       color: #edf4fa !important;
-    }
-
-    html[data-theme="dark"] .footer a,
-    html[data-theme="dark"] footer a {
-      color: #70d2ff;
-    }
-
-    html[data-theme="dark"] .menu-toggle {
-      color: #edf4fa !important;
-    }
-
-    @media (max-width: 768px) {
-      .theme-toggle {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-      }
     }
   `;
 
-  document.head.appendChild(style);
-})();
+  if (!document.getElementById("club-theme-global-style")) {
+    document.head.appendChild(style);
+  }
 
-/* 2. إعداد زر الشمس والقمر */
-
-(function initThemeToggle() {
-  const root = document.documentElement;
-
-  function getTheme() {
+  function readTheme() {
     try {
       return localStorage.getItem("club-theme") || "light";
     } catch (error) {
@@ -137,19 +117,16 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
   }
 
   function applyTheme(theme) {
-    const selected = theme === "dark" ? "dark" : "light";
-
-    root.setAttribute("data-theme", selected);
+    const dark = theme === "dark";
+    root.setAttribute("data-theme", dark ? "dark" : "light");
 
     try {
-      localStorage.setItem("club-theme", selected);
+      localStorage.setItem("club-theme", dark ? "dark" : "light");
     } catch (error) {
-      // يستمر التبديل حتى عند تعذر الحفظ
+      // يستمر التبديل دون حفظ الاختيار
     }
 
     document.querySelectorAll(".theme-toggle").forEach((button) => {
-      const dark = selected === "dark";
-
       button.textContent = dark ? "☀️" : "🌙";
       button.title = dark ? "الوضع الفاتح" : "الوضع الداكن";
       button.setAttribute(
@@ -160,28 +137,38 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
     });
   }
 
-  // إنشاء الزر في الصفحات التي لا تحتوي عليه
-  document.querySelectorAll("header, .header, .site-header").forEach((header) => {
+  /* العثور على رؤوس الصفحات المختلفة */
+  const headers = document.querySelectorAll(
+    "header, .header, .site-header, .nav-wrap"
+  );
+
+  headers.forEach((header) => {
     if (header.querySelector(".theme-toggle")) return;
 
     const button = document.createElement("button");
     button.type = "button";
     button.className = "theme-toggle";
     button.textContent = "🌙";
+    button.title = "الوضع الداكن";
     button.setAttribute("aria-label", "التبديل إلى الوضع الداكن");
 
-    const nav = header.querySelector("nav, .nav, .nav-links");
+    const menuButton = header.querySelector(".menu-toggle");
 
-    if (nav && nav.parentElement === header) {
-      header.insertBefore(button, nav);
+    if (menuButton && menuButton.parentElement === header) {
+      header.insertBefore(button, menuButton);
     } else {
-      header.appendChild(button);
+      const nav = header.querySelector("nav, .nav, .nav-links");
+
+      if (nav && nav.parentElement === header) {
+        header.insertBefore(button, nav);
+      } else {
+        header.appendChild(button);
+      }
     }
   });
 
-  applyTheme(getTheme());
+  applyTheme(readTheme());
 
-  // حدث موحّد حتى يعمل الزر الموجود أو الذي أنشأه الكود
   document.addEventListener("click", (event) => {
     const button = event.target.closest(".theme-toggle");
     if (!button) return;
@@ -191,23 +178,30 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
   });
 })();
 
-/* 3. قائمة الجوال */
+/* 2. قائمة الجوال */
 
-(function initMobileMenu() {
+(function setupMobileMenu() {
   document.querySelectorAll(".menu-toggle").forEach((button) => {
     if (button.dataset.menuReady === "true") return;
     button.dataset.menuReady = "true";
 
     button.addEventListener("click", () => {
       const navId = button.getAttribute("aria-controls");
-      const nav = navId
-        ? document.getElementById(navId)
-        : button.nextElementSibling;
+      let nav = navId ? document.getElementById(navId) : null;
+
+      if (!nav) {
+        nav = button.nextElementSibling;
+      }
+
+      if (!nav) {
+        const header = button.closest("header, .header, .site-header");
+        nav = header?.querySelector(".nav, .nav-links, nav");
+      }
 
       if (!nav) return;
 
-      const isOpen = nav.classList.toggle("open");
-      button.setAttribute("aria-expanded", String(isOpen));
+      const opened = nav.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(opened));
     });
   });
 
@@ -216,7 +210,7 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
       const nav = link.closest(".nav, .nav-links");
       if (nav) nav.classList.remove("open");
 
-      const header = link.closest("header");
+      const header = link.closest("header, .header, .site-header");
       const button = header?.querySelector(".menu-toggle");
 
       if (button) button.setAttribute("aria-expanded", "false");
@@ -224,7 +218,7 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
   });
 })();
 
-/* 4. النماذج التجريبية */
+/* 3. رسائل النماذج */
 
 function showFormStatus(form, message) {
   let status = form.querySelector(".form-status");
@@ -233,6 +227,7 @@ function showFormStatus(form, message) {
     status = document.createElement("p");
     status.className = "form-status";
     status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
     form.appendChild(status);
   }
 
@@ -257,7 +252,7 @@ document.querySelectorAll(
   });
 });
 
-/* 5. سنة حقوق النشر */
+/* 4. سنة حقوق النشر */
 
 document.querySelectorAll("[data-current-year]").forEach((element) => {
   element.textContent = new Date().getFullYear();
