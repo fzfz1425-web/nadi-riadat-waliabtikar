@@ -3,320 +3,876 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#085982">
+  <meta name="description" content="اكتشف الفعاليات والمسابقات والهاكاثونات والورش، وتعرّف على فرص المشاركة مع نادي الابتكار وريادة الأعمال.">
   <title>الفعاليات | نادي الابتكار وريادة الأعمال</title>
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .events-intro {
-      padding: 58px 7%;
+    :root {
+      --navy: #085982;
+      --blue: #2DAFEB;
+      --bg: #f4f9fc;
+      --white: #fff;
+      --text: #233746;
+      --muted: #687b89;
+      --border: #dfebf1;
+      --shadow: 0 12px 32px rgba(8,89,130,.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 25px; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.85;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    [hidden] { display: none !important; }
+
+    .container { width: min(1120px, 91%); margin: auto; }
+
+    /* الترويسة */
+    .site-header {
+      position: relative;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wrap {
+      width: min(1200px, 92%);
+      min-height: 78px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      color: var(--navy);
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .menu-toggle {
+      display: none;
+      background: #fff;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 7px 12px;
+      font-size: 23px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 13px;
+    }
+    .nav-links a { padding: 7px 0; }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    /* المقدمة */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 20px 76px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(45,175,235,.28), transparent 28%),
+        radial-gradient(circle at 88% 90%, rgba(45,175,235,.22), transparent 27%),
+        linear-gradient(125deg, #063f5d, #085982 65%, #1179a7);
+    }
+    .hero-inner {
+      width: min(850px, 100%);
+      margin: auto;
       text-align: center;
-      background: linear-gradient(135deg, #EAF8FF, #FFFFFF);
+      position: relative;
     }
-
-    .events-intro .tag { margin-bottom: 10px; }
-
-    .events-intro h1 {
-      color: #085982;
-      font-size: clamp(2rem, 5vw, 3.3rem);
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.1);
+      padding: 5px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+    .hero h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(30px, 5vw, 48px);
       line-height: 1.4;
-      margin: 12px 0;
     }
-
-    .events-intro p {
-      max-width: 690px;
-      margin: 0 auto;
-      color: #617786;
-      font-size: 1.08rem;
+    .hero h1 span { color: #72d4ff; }
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #e6f7ff;
+      font-size: 16px;
     }
-
-    .events-actions {
+    .hero-actions {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 26px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 20px;
+      font-weight: bold;
+      transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: #159bd8; }
+    .btn-white { background: #fff; color: var(--navy); }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--border);
     }
 
-    .events-section { padding: 55px 7%; }
-    .events-section.soft { background: #F2FAFD; }
-
-    .events-grid {
+    /* شريط الإحصاءات */
+    .intro-strip {
+      width: min(900px, 90%);
+      margin: -25px auto 0;
+      position: relative;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .event-symbol {
-      display: grid;
-      place-items: center;
-      width: 52px;
-      height: 52px;
-      background: #E5F7FF;
-      border-radius: 15px;
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-    }
-
-    .region-card {
-      background: white;
-      border: 1px solid #DCEBF2;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: 17px;
+      box-shadow: var(--shadow);
+    }
+    .stat { text-align: center; padding: 5px; }
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 23px;
+    }
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    /* عناوين الأقسام */
+    section.content-section { padding: 55px 0; }
+    .section-head {
+      max-width: 740px;
+      text-align: center;
+      margin: 0 auto 30px;
+    }
+    .kicker {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .section-head h2 {
+      margin: 6px 0;
+      color: var(--navy);
+      font-size: clamp(24px,4vw,32px);
+      line-height: 1.5;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* البحث والتصفية */
+    .event-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      max-width: 350px;
+    }
+    .search-box input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      padding: 11px 14px;
+      outline-color: var(--blue);
+    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--navy);
+      padding: 8px 14px;
+      border-radius: 25px;
+      font-size: 13px;
+    }
+    .filter-btn.active {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    /* بطاقات الفعاليات */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 19px;
+    }
+    .event-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: 0 5px 20px rgba(8,89,130,.04);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .event-top {
+      min-height: 125px;
       padding: 22px;
       display: flex;
+      justify-content: space-between;
       align-items: flex-start;
-      gap: 14px;
-      min-width: 0;
+      background: linear-gradient(135deg,#e8f7fd,#f5fbfe);
     }
-
-    .region-card .event-symbol {
-      flex-shrink: 0;
-      width: 45px;
-      height: 45px;
-      font-size: 1.4rem;
-    }
-
-    .region-card h3 {
-      margin: 0 0 4px;
-      color: #085982;
-      font-size: 1.2rem;
-    }
-
-    .region-card p {
-      color: #617786;
-      margin: 0 0 10px;
-      font-size: .95rem;
-    }
-
-    .region-card .text-link { color: #087EAF; }
-
-    .remote-panel {
-      background: linear-gradient(120deg, #085982, #0B709F);
-      border-radius: 22px;
-      padding: 32px;
-      color: white;
-    }
-
-    .remote-panel h2 { color: white; margin-top: 0; }
-    .remote-panel p { color: #E0F5FF; }
-
-    .remote-panel .btn {
-      background: white;
-      color: #085982;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .step-card {
-      padding: 22px;
-      background: white;
-      border: 1px solid #DCEBF2;
-      border-radius: 17px;
-    }
-
-    .step-number {
-      width: 36px;
-      height: 36px;
+    .event-icon {
       display: grid;
       place-items: center;
-      border-radius: 50%;
-      background: #2DAFEB;
-      color: white;
-      font-weight: 800;
-      margin-bottom: 12px;
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border: 1px solid #dceff8;
+      border-radius: 17px;
+      font-size: 31px;
+    }
+    .event-number {
+      color: #6f9fb6;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .event-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 20px;
+    }
+    .event-type {
+      color: #1687b6;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .event-body h3 {
+      color: var(--navy);
+      font-size: 19px;
+      line-height: 1.5;
+      margin: 0 0 8px;
+    }
+    .event-body p {
+      margin: 0 0 17px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .event-footer {
+      margin-top: auto;
+      padding-top: 13px;
+      border-top: 1px solid #edf3f6;
+    }
+    .text-link { color: var(--navy); font-size: 13px; font-weight: bold; }
+    .text-link:hover { color: var(--blue); }
+    .no-results {
+      grid-column: 1 / -1;
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+      background: #fff;
+      border: 1px dashed var(--border);
+      border-radius: 15px;
     }
 
-    .step-card h3 { color: #085982; margin: 0 0 8px; }
-    .step-card p { color: #617786; margin: 0; }
+    /* الفعاليات عن بعد */
+    .remote-section { background: #eaf6fc; }
+    .remote-panel {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      align-items: center;
+      gap: 28px;
+      padding: 30px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    .remote-art {
+      display: grid;
+      place-items: center;
+      min-height: 240px;
+      border-radius: 16px;
+      background: linear-gradient(145deg,#e4f6fd,#f5fbfe);
+      font-size: 78px;
+    }
+    .remote-copy h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 25px;
+    }
+    .remote-copy p { color: var(--muted); font-size: 14px; }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 17px 0 22px;
+    }
+    .feature-list li { margin-bottom: 8px; font-size: 13px; }
+    .feature-list li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: bold;
+      margin-left: 8px;
+    }
 
-    @media (max-width: 700px) {
-      .events-intro { padding: 42px 5%; }
-      .events-section { padding: 42px 5%; }
-      .events-grid, .steps-grid { grid-template-columns: 1fr; }
-      .region-card { padding: 17px; }
-      .remote-panel { padding: 24px 20px; }
+    /* قنوات المناطق */
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 16px;
+    }
+    .region-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+      padding: 21px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .region-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .region-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      border-radius: 15px;
+      background: #e8f7fd;
+      font-size: 27px;
+    }
+    .region-copy { flex: 1; min-width: 0; }
+    .region-copy h3 {
+      margin: 0 0 3px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+    .region-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .region-action {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      background: #e5f6fd;
+      color: var(--navy);
+      border-radius: 9px;
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .region-action:hover { background: var(--blue); color: #fff; }
+
+    /* خطوات المشاركة */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 15px;
+    }
+    .workflow-step {
+      padding: 21px 17px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      background: #e5f6fd;
+      color: var(--navy);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .workflow-step h3 {
+      color: var(--navy);
+      font-size: 16px;
+      margin: 0 0 7px;
+    }
+    .workflow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* التنبيه والختام */
+    .notice {
+      margin-top: 22px;
+      padding: 14px 17px;
+      background: #fff5dc;
+      color: #72591b;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+    .closing {
+      text-align: center;
+      padding: 46px 20px;
+      color: #fff;
+      background: linear-gradient(120deg,#085982,#0879a8);
+    }
+    .closing h2 { margin: 0 0 8px; font-size: 27px; }
+    .closing p { margin: 0 auto 20px; color: #e5f6fd; }
+    footer {
+      padding: 22px;
+      text-align: center;
+      background: #063e59;
+      color: #e3f3fa;
+      font-size: 12px;
+    }
+    footer p { margin: 4px; }
+
+    @media (max-width: 900px) {
+      .event-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .workflow-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .nav-wrap { flex-wrap: wrap; padding: 13px 0; }
+      .nav-links { gap: 12px; }
+    }
+
+    @media (max-width: 650px) {
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .brand { margin-left: auto; font-size: 15px; }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 10px;
+        border-bottom: 1px solid #edf3f6;
+      }
+      .hero { padding: 48px 17px 55px; }
+      .hero p { font-size: 14px; }
+      .intro-strip { padding: 12px 6px; gap: 3px; }
+      .stat strong { font-size: 19px; }
+      .stat span { font-size: 10px; }
+      section.content-section { padding: 40px 0; }
+      .event-grid,
+      .remote-panel { grid-template-columns: 1fr; }
+      .event-tools { align-items: stretch; }
+      .search-box { max-width: none; }
+      .filters { justify-content: center; }
+      .remote-panel { padding: 18px; }
+      .remote-art { min-height: 145px; font-size: 60px; }
+      .region-card { align-items: flex-start; flex-wrap: wrap; }
+      .region-copy { flex-basis: calc(100% - 78px); }
+      .region-action { margin-right: 74px; }
+    }
+
+    @media (max-width: 420px) {
+      .workflow-grid { grid-template-columns: 1fr; }
+      .intro-strip { width: 94%; }
+      .region-grid { grid-template-columns: 1fr; }
+      .region-action { margin-right: 74px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">نادي الابتكار وريادة الأعمال</a>
+    <button class="menu-toggle" type="button"
+      aria-label="فتح القائمة" aria-expanded="false" aria-controls="main-nav">☰</button>
 
-  <header class="header">
-    <a href="index.html" class="logo">نادي الابتكار وريادة الأعمال</a>
-
-    <button class="menu-toggle"
-      type="button"
-      aria-label="فتح القائمة"
-      aria-controls="main-nav"
-      aria-expanded="false">☰</button>
-
-    <nav class="nav" id="main-nav">
+    <nav class="nav-links" id="main-nav" aria-label="القائمة الرئيسية">
       <a href="index.html">الرئيسية</a>
       <a href="about.html">عن النادي</a>
       <a href="teams.html">الفرق</a>
-      <a href="events.html" class="active">الفعاليات</a>
+      <a class="active" href="events.html" aria-current="page">الفعاليات</a>
       <a href="projects.html">المشاريع</a>
       <a href="contact.html">تواصل معنا</a>
-      <a href="join.html" class="nav-cta">انضم إلى النادي</a>
+      <a href="join.html">انضم إلى النادي</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="events-intro">
-      <span class="tag">نحو أفكار تصنع الفرق</span>
-      <h1>اكتشف الفرص، واصنع تجربتك</h1>
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">فرص للتعلّم والتجربة</span>
+      <h1>اكتشف الفرص، واصنع <span>أثرك</span></h1>
       <p>
-        مساحة تجمع المهتمين بالابتكار وريادة الأعمال،
-        وتقرّبك من المسابقات والهاكاثونات وورش العمل والفعاليات الجامعية.
+        من المسابقات والهاكاثونات إلى الورش واللقاءات؛ تعرّف على مجالات المشاركة
+        التي تساعدك على تطوير مهاراتك، وتبادل الخبرات، وتحويل المعرفة إلى تجربة عملية.
       </p>
-      <div class="events-actions">
-        <a href="#opportunities" class="btn">استكشف الفرص</a>
-        <a href="#regions" class="btn btn-outline">قنوات المناطق</a>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#event-list">استكشف الفعاليات</a>
+        <a class="btn btn-white" href="#region-channels">قنوات المناطق</a>
       </div>
-    </section>
-
-    <section class="events-section" id="opportunities">
-      <div class="section-heading">
-        <span class="eyebrow">اكتشف مجالاتك</span>
-        <h2>فرص للتعلّم والتجربة</h2>
-        <p>اختر المجال الذي يهمك وابدأ في تطوير مهاراتك.</p>
-      </div>
-
-      <div class="events-grid">
-        <article class="card">
-          <div class="event-symbol">🏆</div>
-          <h3>المسابقات</h3>
-          <p>اكتشف التحديات التي تتيح لك عرض أفكارك واكتساب الخبرة والتعلّم من الآخرين.</p>
-        </article>
-
-        <article class="card">
-          <div class="event-symbol">💡</div>
-          <h3>الهاكاثونات</h3>
-          <p>تعاون مع الآخرين لتطوير حلول مبتكرة وتحويل الأفكار إلى نماذج أولية.</p>
-        </article>
-
-        <article class="card">
-          <div class="event-symbol">🎓</div>
-          <h3>ورش العمل</h3>
-          <p>طوّر مهاراتك في الابتكار وريادة الأعمال واكتسب معارف جديدة.</p>
-        </article>
-
-        <article class="card">
-          <div class="event-symbol">🤝</div>
-          <h3>اللقاءات والفعاليات</h3>
-          <p>تبادل الخبرات وتعرّف على فرص جديدة لبناء الأفكار والمشاريع.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="events-section soft" id="regions">
-      <div class="section-heading">
-        <span class="eyebrow">فرص قريبة منك</span>
-        <h2>فريق المناطق</h2>
-        <p>تابع قناة منطقتك للاطلاع على فرص المشاركة والفعاليات المحلية.</p>
-      </div>
-
-      <div class="events-grid">
-        <article class="region-card">
-          <div class="event-symbol">📍</div>
-          <div>
-            <h3>منطقة الرياض</h3>
-            <p>تابع الفرص والأنشطة المحلية.</p>
-            <a class="text-link" href="https://t.me/+UO1TAXbhw8dhZDA0" target="_blank" rel="noopener noreferrer">الانضمام للقناة ←</a>
-          </div>
-        </article>
-
-        <article class="region-card">
-          <div class="event-symbol">📍</div>
-          <div>
-            <h3>منطقة مكة المكرمة</h3>
-            <p>تعرّف على فرص المشاركة في المنطقة.</p>
-            <a class="text-link" href="https://t.me/+pXPAi_pEkrk5NDk0" target="_blank" rel="noopener noreferrer">الانضمام للقناة ←</a>
-          </div>
-        </article>
-
-        <article class="region-card">
-          <div class="event-symbol">📍</div>
-          <div>
-            <h3>مدينة جدة</h3>
-            <p>تابع الأنشطة والفرص المحلية.</p>
-            <a class="text-link" href="https://t.me/+TBsoJSUG1h42MTQ0" target="_blank" rel="noopener noreferrer">الانضمام للقناة ←</a>
-          </div>
-        </article>
-
-        <article class="region-card">
-          <div class="event-symbol">📍</div>
-          <div>
-            <h3>منطقة المدينة المنورة</h3>
-            <p>اطّلع على فرص المشاركة المحلية.</p>
-            <a class="text-link" href="https://t.me/+18U2inJnY_ZiY2U0" target="_blank" rel="noopener noreferrer">الانضمام للقناة ←</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="events-section">
-      <div class="remote-panel">
-        <span class="eyebrow" style="color:#BDEBFF">من أي مكان</span>
-        <h2>🌐 الفعاليات عن بُعد</h2>
-        <p>تابع قناة الفعاليات الافتراضية للتعرّف على فرص الورش واللقاءات والأنشطة عن بُعد.</p>
-        <a class="btn" href="https://t.me/+qmbR1weem-g4Y2U8" target="_blank" rel="noopener noreferrer">متابعة قناة الفعاليات</a>
-      </div>
-    </section>
-
-    <section class="events-section soft">
-      <div class="section-heading">
-        <span class="eyebrow">خطوتك القادمة</span>
-        <h2>كيف تستفيد من الفرص؟</h2>
-        <p>ابدأ بخطوات بسيطة لتكون مستعدًا للمشاركة.</p>
-      </div>
-
-      <div class="steps-grid">
-        <article class="step-card">
-          <div class="step-number">1</div>
-          <h3>تابع الإعلانات</h3>
-          <p>اطّلع على القنوات لمعرفة الفرص الجديدة.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">2</div>
-          <h3>اختر الفرصة المناسبة</h3>
-          <p>اقرأ شروط المشاركة والمواعيد المعلنة.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">3</div>
-          <h3>شارك وتعلّم</h3>
-          <p>استفد من التجربة ووسّع مهاراتك وعلاقاتك.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <h2>هل لديك فرصة أو فعالية تقترحها؟</h2>
-      <p>شاركنا اقتراحك وساهم في إثراء مجتمع النادي.</p>
-      <a href="contact.html" class="btn btn-light">تواصل معنا</a>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <a href="index.html" class="logo footer-logo">نادي الابتكار وريادة الأعمال</a>
-    <p>الجامعة الإسلامية بمنيسوتا</p>
-    <div class="footer-links">
-      <a href="about.html">عن النادي</a>
-      <a href="teams.html">الفرق</a>
-      <a href="events.html">الفعاليات</a>
-      <a href="projects.html">المشاريع</a>
-      <a href="contact.html">تواصل معنا</a>
     </div>
-    <small>© نادي الابتكار وريادة الأعمال</small>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <div class="intro-strip" aria-label="ملخص الفعاليات">
+    <div class="stat">
+      <strong>4 مجالات</strong>
+      <span>فرص متنوعة للمشاركة</span>
+    </div>
+    <div class="stat">
+      <strong>عن بُعد</strong>
+      <span>تعاون من مختلف المناطق</span>
+    </div>
+    <div class="stat">
+      <strong>خطوتك القادمة</strong>
+      <span>تعلّم وشارك وطوّر</span>
+    </div>
+  </div>
+
+  <section class="content-section" id="event-list">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">مساحات للتجربة</span>
+        <h2>ما الفرصة التي تبحث عنها؟</h2>
+        <p>استكشف المجالات المختلفة، واستخدم البحث والتصفية للوصول إلى ما يناسب اهتمامك.</p>
+      </div>
+
+      <div class="event-tools">
+        <div class="search-box">
+          <input type="search" id="event-search"
+            placeholder="ابحث عن مجال أو نشاط..."
+            aria-label="البحث عن الفعاليات">
+        </div>
+        <div class="filters" aria-label="تصفية مجالات الفعاليات">
+          <button class="filter-btn active" type="button" data-filter="all">الكل</button>
+          <button class="filter-btn" type="button" data-filter="competition">المسابقات</button>
+          <button class="filter-btn" type="button" data-filter="hackathon">الهاكاثونات</button>
+          <button class="filter-btn" type="button" data-filter="workshop">الورش</button>
+          <button class="filter-btn" type="button" data-filter="local">الفعاليات المحلية</button>
+        </div>
+      </div>
+
+      <div class="event-grid" id="event-grid">
+        <article class="event-card" data-category="competition"
+          data-search="المسابقات تحديات ابتكار مشاريع أفكار منافسات جامعية">
+          <div class="event-top">
+            <div class="event-icon" aria-hidden="true">🏆</div>
+            <span class="event-number">TYPE 01</span>
+          </div>
+          <div class="event-body">
+            <span class="event-type">التحدي والإنجاز</span>
+            <h3>المسابقات الطلابية</h3>
+            <p>فرص لاختبار الأفكار، وتنمية مهارات العرض والتفكير الإبداعي، والتعلّم من تجارب المشاركين.</p>
+            <div class="event-footer">
+              <a class="text-link" href="https://t.me/+qmbR1weem-g4Y2U8" target="_blank" rel="noopener noreferrer">تابع فرص الفعاليات عن بُعد ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="hackathon"
+          data-search="هاكاثونات البرمجة التقنية الذكاء الاصطناعي حلول رقمية فرق تحديات">
+          <div class="event-top">
+            <div class="event-icon" aria-hidden="true">💻</div>
+            <span class="event-number">TYPE 02</span>
+          </div>
+          <div class="event-body">
+            <span class="event-type">ابتكار الحلول</span>
+            <h3>الهاكاثونات التقنية</h3>
+            <p>تجربة العمل ضمن فريق لتطوير حلول أولية للتحديات، وتطبيق المهارات التقنية والإبداعية.</p>
+            <div class="event-footer">
+              <a class="text-link" href="https://t.me/+qmbR1weem-g4Y2U8" target="_blank" rel="noopener noreferrer">تابع فرص الفعاليات عن بُعد ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="workshop"
+          data-search="ورش عمل لقاءات تدريب تعلم مهارات تطوير الذات ريادة الأعمال تقنية">
+          <div class="event-top">
+            <div class="event-icon" aria-hidden="true">🎓</div>
+            <span class="event-number">TYPE 03</span>
+          </div>
+          <div class="event-body">
+            <span class="event-type">التعلّم والتطوير</span>
+            <h3>الورش واللقاءات</h3>
+            <p>مساحة للتعرّف على أدوات ومهارات جديدة، والاستفادة من الخبرات وتبادل المعرفة.</p>
+            <div class="event-footer">
+              <a class="text-link" href="https://t.me/+qmbR1weem-g4Y2U8" target="_blank" rel="noopener noreferrer">تابع فرص الفعاليات عن بُعد ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="local"
+          data-search="الفعاليات المحلية المناطق حضور مشاركة ميدانية لقاءات جغرافية">
+          <div class="event-top">
+            <div class="event-icon" aria-hidden="true">📍</div>
+            <span class="event-number">TYPE 04</span>
+          </div>
+          <div class="event-body">
+            <span class="event-type">المشاركة في المناطق</span>
+            <h3>الفعاليات المحلية</h3>
+            <p>التعرّف على الفرص المتاحة في منطقتك، والمساهمة في المشاركات المناسبة وفق الإجراءات والموافقات اللازمة.</p>
+            <div class="event-footer">
+              <a class="text-link" href="#region-channels">استكشف قنوات المناطق ↓</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="no-results" id="no-results" hidden>
+          لم نعثر على نتيجة مطابقة. جرّب كلمة أخرى أو اختر تصفية مختلفة.
+        </div>
+      </div>
+
+      <div class="notice">
+        تنويه: هذه الصفحة للتعريف بمجالات المشاركة وقنوات التواصل، وليست إعلانًا عن فعاليات مؤكدة أو تسجيلًا رسميًا فيها.
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section remote-section" id="remote-events">
+    <div class="container">
+      <div class="remote-panel">
+        <div class="remote-art" aria-hidden="true">🌐</div>
+        <div class="remote-copy">
+          <span class="kicker">من أي مكان</span>
+          <h3>الفعاليات والورش عن بُعد</h3>
+          <p>
+            تابع فرص اللقاءات والورش والأنشطة التي يمكن المشاركة فيها عن بُعد،
+            وتعرّف على فرص تطوير مهاراتك والتعاون مع المهتمين من مختلف المناطق.
+          </p>
+          <ul class="feature-list">
+            <li>متابعة الفرص والأنشطة المنشورة في القناة.</li>
+            <li>التعرّف على ورش ومجالات تعلّم متنوعة.</li>
+            <li>الاستفادة من فرص المشاركة المناسبة لاهتماماتك.</li>
+          </ul>
+          <a class="btn btn-primary" href="https://t.me/+qmbR1weem-g4Y2U8"
+            target="_blank" rel="noopener noreferrer">الانتقال إلى قناة تيليجرام ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="region-channels">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">مجتمع يمتد عبر المناطق</span>
+        <h2>قنوات التواصل حسب المنطقة</h2>
+        <p>
+          اختر القناة المناسبة لمنطقتك لمتابعة ما يُنشر فيها من فرص وتحديثات.
+          توافر الفرص وتفاصيل المشاركة يعتمد على الإعلانات والإجراءات ذات الصلة.
+        </p>
+      </div>
+
+      <div class="region-grid">
+        <article class="region-card">
+          <div class="region-icon" aria-hidden="true">🏙️</div>
+          <div class="region-copy">
+            <h3>منطقة الرياض</h3>
+            <p>لمتابعة فرص المشاركة والتحديثات الخاصة بالمنطقة.</p>
+          </div>
+          <a class="region-action" href="https://t.me/+UO1TAXbhw8dhZDA0"
+            target="_blank" rel="noopener noreferrer">دخول القناة ↗</a>
+        </article>
+
+        <article class="region-card">
+          <div class="region-icon" aria-hidden="true">🕋</div>
+          <div class="region-copy">
+            <h3>منطقة مكة المكرمة</h3>
+            <p>لمتابعة الفرص والتحديثات ذات الصلة بالمنطقة.</p>
+          </div>
+          <a class="region-action" href="https://t.me/+pXPAi_pEkrk5NDk0"
+            target="_blank" rel="noopener noreferrer">دخول القناة ↗</a>
+        </article>
+
+        <article class="region-card">
+          <div class="region-icon" aria-hidden="true">🌊</div>
+          <div class="region-copy">
+            <h3>مدينة جدة</h3>
+            <p>لمتابعة الفرص والتحديثات الخاصة بجدة.</p>
+          </div>
+          <a class="region-action" href="https://t.me/+TBsoJSUG1h42MTQ0"
+            target="_blank" rel="noopener noreferrer">دخول القناة ↗</a>
+        </article>
+
+        <article class="region-card">
+          <div class="region-icon" aria-hidden="true">🕌</div>
+          <div class="region-copy">
+            <h3>منطقة المدينة المنورة</h3>
+            <p>لمتابعة فرص المشاركة والتحديثات الخاصة بالمنطقة.</p>
+          </div>
+          <a class="region-action" href="https://t.me/+18U2inJnY_ZiY2U0"
+            target="_blank" rel="noopener noreferrer">دخول القناة ↗</a>
+        </article>
+      </div>
+
+      <div class="notice">
+        يعمل فريق المناطق على تعزيز التواصل واستكشاف الفرص المحلية المناسبة.
+        أي مشاركة باسم الجامعة أو النادي تخضع للإجراءات والموافقات المطلوبة.
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">من الاهتمام إلى المشاركة</span>
+        <h2>كيف تستفيد من الفرص؟</h2>
+        <p>خطوات بسيطة تساعدك على اختيار الفرصة المناسبة والاستعداد لها.</p>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="workflow-step">
+          <div class="step-number">01</div>
+          <h3>حدّد اهتمامك</h3>
+          <p>اختر المجال الذي ترغب في تعلّمه أو تطوير مهاراتك فيه.</p>
+        </article>
+        <article class="workflow-step">
+          <div class="step-number">02</div>
+          <h3>تابع الإعلانات</h3>
+          <p>راجع تفاصيل الفرص ومواعيدها وشروط المشاركة المنشورة.</p>
+        </article>
+        <article class="workflow-step">
+          <div class="step-number">03</div>
+          <h3>استعد للمشاركة</h3>
+          <p>جهّز متطلباتك وتأكد من استيفاء شروط الجهة المنظمة.</p>
+        </article>
+        <article class="workflow-step">
+          <div class="step-number">04</div>
+          <h3>وثّق تجربتك</h3>
+          <p>استفد مما تعلمته وشارك الخبرات التي يمكن أن تفيد الآخرين.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <h2>كل تجربة تمنحك فرصة للنمو</h2>
+    <p>اكتشف مجالات الابتكار وريادة الأعمال، وابدأ بخطوة تناسب اهتماماتك.</p>
+    <a class="btn btn-white" href="teams.html">تعرّف على فرق النادي</a>
+    <a class="btn btn-white" href="contact.html">تواصل معنا</a>
+  </section>
+</main>
+
+<footer>
+  <p><strong>نادي الابتكار وريادة الأعمال</strong></p>
+  <p>الجامعة الإسلامية بمنيسوتا</p>
+  <p>مساحة للتعاون والتعلّم وتطوير المبادرات.</p>
+</footer>
+
+<script>
+  // قائمة الجوال
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.getElementById("main-nav");
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "إغلاق القائمة" : "فتح القائمة"
+      );
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "فتح القائمة");
+        menuToggle.textContent = "☰";
+      });
+    });
+  }
+
+  // البحث والتصفية
+  const searchInput = document.getElementById("event-search");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const eventCards = document.querySelectorAll(".event-card");
+  const noResults = document.getElementById("no-results");
+  let currentFilter = "all";
+
+  function filterEvents() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    eventCards.forEach((card) => {
+      const categoryMatch =
+        currentFilter === "all" || card.dataset.category === currentFilter;
+
+      const searchableText =
+        (card.dataset.search + " " + card.innerText).toLowerCase();
+
+      const searchMatch = searchableText.includes(query);
+      const show = categoryMatch && searchMatch;
+
+      card.hidden = !show;
+      if (show) visibleCount++;
+    });
+
+    noResults.hidden = visibleCount !== 0;
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      currentFilter = button.dataset.filter;
+
+      filterButtons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+
+      filterEvents();
+    });
+  });
+
+  searchInput.addEventListener("input", filterEvents);
+</script>
 </body>
 </html>
