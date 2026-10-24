@@ -139,7 +139,7 @@ const CLUB_EMAIL = "Fzfz1425@gmail.com";
 
   /* العثور على رؤوس الصفحات المختلفة */
   const headers = document.querySelectorAll(
-    "header, .header, .site-header, .nav-wrap"
+    "header, .header, .site-header"
   );
 
   headers.forEach((header) => {
