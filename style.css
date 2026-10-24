@@ -1162,3 +1162,63 @@ html[data-theme="dark"] .image-note {
     padding: 8px;
   }
 }
+/* تحسين الواجهة الرئيسية */
+.home-hero {
+  min-height: 560px;
+  gap: 55px;
+}
+
+.home-hero .hero-content {
+  max-width: 650px;
+}
+
+.home-hero .hero-image {
+  border-radius: 30px;
+  box-shadow: 0 25px 60px rgba(8, 89, 130, 0.2);
+}
+
+.home-card,
+.opportunity-card,
+.journey-card {
+  border-radius: 24px;
+  padding: 30px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-card:hover,
+.opportunity-card:hover,
+.journey-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(8, 89, 130, 0.12);
+}
+
+.section-heading {
+  margin-bottom: 42px;
+}
+
+.section-heading h2 {
+  letter-spacing: -0.4px;
+}
+
+.home-cta {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+@media (max-width: 600px) {
+  .home-hero {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .home-card,
+  .opportunity-card,
+  .journey-card {
+    padding: 23px;
+  }
+
+  .home-cta {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
