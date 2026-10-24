@@ -1,138 +1,1348 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="تعرف على الفرق والمجالات التطوعية في نادي الابتكار وريادة الأعمال">
   <meta name="theme-color" content="#085982">
+  <meta name="description" content="تعرّف على فرق نادي الابتكار وريادة الأعمال ومهامها وفرص المشاركة في العمل الطلابي.">
   <title>الفرق | نادي الابتكار وريادة الأعمال</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --navy: #085982;
+      --blue: #2DAFEB;
+      --bg: #f4f9fc;
+      --white: #ffffff;
+      --text: #233746;
+      --muted: #687b89;
+      --border: #dfebf1;
+      --shadow: 0 12px 32px rgba(8, 89, 130, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select, textarea { font: inherit; }
+
+    button { cursor: pointer; }
+
+    .container {
+      width: min(1120px, 91%);
+      margin: auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 5;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      width: min(1200px, 92%);
+      min-height: 78px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 7px 12px;
+      font-size: 23px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 7px 0;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 20px 76px;
+      color: white;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(45,175,235,.28), transparent 28%),
+        radial-gradient(circle at 88% 90%, rgba(45,175,235,.22), transparent 27%),
+        linear-gradient(125deg, #063f5d, #085982 65%, #1179a7);
+    }
+
+    .hero-inner {
+      width: min(850px, 100%);
+      margin: auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.1);
+      padding: 5px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.4;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #e6f7ff;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 20px;
+      font-weight: bold;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .btn-primary:hover { background: #159bd8; }
+
+    .btn-white {
+      background: white;
+      color: var(--navy);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .intro-strip {
+      width: min(900px, 90%);
+      margin: -25px auto 0;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 5px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section { padding: 55px 0; }
+
+    .section-head {
+      max-width: 740px;
+      text-align: center;
+      margin: 0 auto 30px;
+    }
+
+    .section-head .kicker {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .section-head h2 {
+      margin: 6px 0;
+      color: var(--navy);
+      font-size: clamp(24px, 4vw, 32px);
+      line-height: 1.5;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .team-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 23px;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      max-width: 350px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 10px;
+      padding: 11px 14px;
+      outline-color: var(--blue);
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      padding: 8px 14px;
+      border-radius: 25px;
+      font-size: 13px;
+    }
+
+    .filter-btn.active {
+      color: white;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 19px;
+    }
+
+    .team-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: 0 5px 20px rgba(8,89,130,.04);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .team-top {
+      min-height: 125px;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: linear-gradient(135deg, #e8f7fd, #f5fbfe);
+    }
+
+    .team-icon {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      background: white;
+      border: 1px solid #dceff8;
+      border-radius: 17px;
+      font-size: 31px;
+    }
+
+    .team-number {
+      color: #6f9fb6;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .team-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .team-type {
+      color: #1687b6;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .team-body h3 {
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.5;
+      margin: 0 0 8px;
+    }
+
+    .team-body p {
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .task-title {
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .task-list {
+      margin: 0 0 18px;
+      padding-right: 18px;
+      color: #526b7a;
+      font-size: 12px;
+    }
+
+    .task-list li { margin-bottom: 3px; }
+
+    .team-footer {
+      margin-top: auto;
+      display: flex;
+      gap: 9px;
+      padding-top: 13px;
+      border-top: 1px solid #edf3f6;
+    }
+
+    .team-footer button {
+      flex: 1;
+      font-size: 12px;
+      padding: 9px 7px;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+      background: white;
+      border: 1px dashed var(--border);
+      border-radius: 15px;
+    }
+
+    .regions {
+      background: #eaf6fc;
+    }
+
+    .regions-panel {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 28px;
+      padding: 30px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid var(--border);
+    }
+
+    .regions-art {
+      display: grid;
+      place-items: center;
+      min-height: 240px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #e4f6fd, #f5fbfe);
+      font-size: 88px;
+    }
+
+    .regions-copy h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    .regions-copy p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .region-points {
+      list-style: none;
+      padding: 0;
+      margin: 17px 0 22px;
+    }
+
+    .region-points li {
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .region-points li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: bold;
+      margin-left: 8px;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .workflow-step {
+      padding: 21px 17px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      background: #e5f6fd;
+      color: var(--navy);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .workflow-step h3 {
+      color: var(--navy);
+      font-size: 16px;
+      margin: 0 0 7px;
+    }
+
+    .workflow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .join-section { background: white; }
+
+    .join-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .join-copy {
+      padding: 24px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #085982, #06415f);
+      color: white;
+    }
+
+    .join-copy h3 {
+      font-size: 24px;
+      margin: 0 0 12px;
+    }
+
+    .join-copy p {
+      color: #e1f5fd;
+      font-size: 14px;
+    }
+
+    .join-copy ul {
+      padding-right: 20px;
+      font-size: 13px;
+    }
+
+    .join-form {
+      padding: 25px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-width: 0;
+      padding: 11px;
+      border: 1px solid #d6e5ec;
+      border-radius: 9px;
+      background: white;
+      outline-color: var(--blue);
+    }
+
+    .field textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .demo-notice {
+      background: #fff5dc;
+      color: #72591b;
+      border-radius: 9px;
+      padding: 11px 13px;
+      margin: 16px 0;
+      font-size: 12px;
+    }
+
+    .form-message {
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    .closing {
+      text-align: center;
+      padding: 46px 20px;
+      color: white;
+      background: linear-gradient(120deg, #085982, #0879a8);
+    }
+
+    .closing h2 {
+      margin: 0 0 8px;
+      font-size: 27px;
+    }
+
+    .closing p {
+      margin: 0 auto 20px;
+      color: #e5f6fd;
+    }
+
+    footer {
+      padding: 22px;
+      text-align: center;
+      background: #063e59;
+      color: #e3f3fa;
+      font-size: 12px;
+    }
+
+    footer p { margin: 4px; }
+
+    [hidden] { display: none !important; }
+
+    /* نافذة تفاصيل الفريق */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(3, 35, 51, .65);
+    }
+
+    .modal-panel {
+      width: min(560px, 100%);
+      max-height: 85vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .modal-head h2 {
+      color: var(--navy);
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .modal-close {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 9px;
+      font-size: 20px;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .modal-panel p { color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .workflow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-wrap { flex-wrap: wrap; padding: 13px 0; }
+      .nav-links { gap: 12px; }
+    }
+
+    @media (max-width: 650px) {
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .brand { margin-left: auto; font-size: 15px; }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 9px 10px;
+        border-bottom: 1px solid #edf3f6;
+      }
+
+      .hero { padding: 48px 17px 55px; }
+      .hero p { font-size: 14px; }
+      .intro-strip { padding: 12px 6px; gap: 3px; }
+      .stat strong { font-size: 21px; }
+      .stat span { font-size: 11px; }
+
+      section { padding: 40px 0; }
+
+      .team-grid,
+      .regions-panel,
+      .join-layout { grid-template-columns: 1fr; }
+
+      .team-tools { align-items: stretch; }
+      .search-box { max-width: none; }
+      .filters { justify-content: center; }
+      .regions-panel { padding: 18px; }
+      .regions-art { min-height: 150px; font-size: 65px; }
+      .join-form { padding: 17px; }
+    }
+
+    @media (max-width: 420px) {
+      .workflow-grid,
+      .form-grid { grid-template-columns: 1fr; }
+
+      .field.full { grid-column: auto; }
+
+      .team-footer { flex-direction: column; }
+      .team-footer button { width: 100%; }
+      .intro-strip { width: 94%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header class="header">
-  <a class="logo" href="index.html">
-    نادي <span>الابتكار</span>
-  </a>
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="فتح قائمة التنقل"
-    onclick="document.querySelector('.nav').classList.toggle('open')">
-    ☰
-  </button>
-  <nav class="nav">
-    <a href="index.html">الرئيسية</a>
-    <a href="about.html">عن النادي</a>
-    <a class="active" href="teams.html">الفرق</a>
-    <a href="events.html">الفعاليات</a>
-    <a href="projects.html">المشاريع</a>
-    <a href="contact.html">تواصل معنا</a>
-    <a class="nav-cta" href="join.html">انضم إلى النادي</a>
-  </nav>
-</header>
-<main>
-  <!-- مقدمة صفحة الفرق -->
-  <section class="page-hero">
-    <span class="eyebrow">قوتنا في تنوعنا</span>
-    <h1>اختر فريقك، واصنع أثرًا</h1>
-    <p>
-      يتيح النادي للطلاب المشاركة في فرق متنوعة
-      بحسب اهتماماتهم ومهاراتهم، والعمل معًا
-      لتطوير الأفكار وتنفيذ المبادرات والمشاريع المبتكرة.
-    </p>
-  </section>
-  <!-- الفرق والمجالات -->
-  <section class="section">
-    <div class="grid grid-3">
-      <article class="card">
-        <div class="icon">💡</div>
-        <h3>فريق الابتكار</h3>
-        <p>
-          توليد الأفكار، وتحديد التحديات،
-          وتصميم الحلول الإبداعية والمبتكرة.
-        </p>
-      </article>
-      <article class="card">
-        <div class="icon">🚀</div>
-        <h3>فريق ريادة الأعمال</h3>
-        <p>
-          دراسة الأفكار، وإعداد نماذج الأعمال،
-          وتطوير المبادرات والمشاريع الريادية.
-        </p>
-      </article>
-      <article class="card">
-        <div class="icon">💻</div>
-        <h3>فريق التقنية</h3>
-        <p>
-          تطوير النماذج الأولية والحلول الرقمية
-          والتقنية الداعمة للمشاريع.
-        </p>
-      </article>
-      <article class="card">
-        <div class="icon">📣</div>
-        <h3>فريق الإعلام والتسويق</h3>
-        <p>
-          إعداد المحتوى، والتغطيات الإعلامية،
-          والتعريف بإنجازات النادي ومبادراته.
-        </p>
-      </article>
-      <article class="card">
-        <div class="icon">🎪</div>
-        <h3>فريق الفعاليات</h3>
-        <p>
-          المساهمة في تنظيم اللقاءات والورش،
-          ورصد فرص المشاركة في الفعاليات
-          والمسابقات والهاكاثونات.
-        </p>
-      </article>
-      <article class="card">
-        <div class="icon">📍</div>
-        <h3>فريق المناطق</h3>
-        <p>
-          يضم الفريق طلابًا من مناطق جغرافية مختلفة،
-          ويعمل منسق لكل منطقة على رصد الفعاليات
-          والمسابقات والهاكاثونات المحلية،
-          والتنسيق لمشاركة طلاب الجامعة فيها
-          بالتعاون مع إدارة النادي.
-        </p>
-      </article>
-    </div>
-    <div class="notice">
-      <strong>آلية عمل فريق المناطق:</strong>
-      تُنظَّم الفرق بحسب المناطق الجغرافية،
-      ويُحدَّد منسق لكل منطقة لمتابعة الفرص المحلية
-      والتواصل مع الطلاب المهتمين بالمشاركة.
-      ويهدف ذلك إلى تنمية المهارات، وتعزيز العمل الجماعي،
-      وتمثيل الجامعة في المحافل المناسبة،
-      وفق الإجراءات والموافقات المعتمدة.
-    </div>
-  </section>
-  <!-- دعوة لاختيار الفريق -->
-  <section class="cta-section">
-    <h2>أين ترى نفسك؟</h2>
-    <p>
-      اختر المجال الأقرب إلى اهتماماتك عند تعبئة
-      نموذج الانضمام، وكن جزءًا من مجتمع طلابي مبتكر.
-    </p>
-    <a class="btn btn-light" href="join.html">
-      اختيار الفريق
-    </a>
-  </section>
-</main>
-<!-- تذييل الموقع -->
-<footer class="footer">
-  <a class="logo footer-logo" href="index.html">
-    نادي الابتكار وريادة الأعمال
-  </a>
-  <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
-  <div class="footer-links">
-    <a href="index.html">الرئيسية</a>
-    <a href="about.html">عن النادي</a>
-    <a href="contact.html">تواصل معنا</a>
-    <a href="join.html">انضم إلينا</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">نادي الابتكار وريادة الأعمال</a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="فتح القائمة"
+      aria-expanded="false"
+      aria-controls="main-nav">
+      ☰
+    </button>
+
+    <nav class="nav-links" id="main-nav" aria-label="القائمة الرئيسية">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">عن النادي</a>
+      <a class="active" href="teams.html" aria-current="page">الفرق</a>
+      <a href="events.html">الفعاليات</a>
+      <a href="projects.html">المشاريع</a>
+      <a href="contact.html">تواصل معنا</a>
+      <a href="join.html">انضم إلى النادي</a>
+    </nav>
   </div>
-  <small>© 2026 نادي الابتكار وريادة الأعمال</small>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">معًا نصنع الأثر</span>
+      <h1>فرق تصنع الأفكار وتحوّلها إلى إنجازات</h1>
+      <p>
+        يقوم النادي على التعاون وتكامل المهارات. اكتشف الفرق، وتعرّف على
+        أدوارها، وحدّد المجال الذي تستطيع من خلاله تقديم قيمة والمساهمة في المبادرات.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#all-teams">اكتشف الفرق</a>
+        <a class="btn btn-white" href="#join-team">اختر فريقك</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="intro-strip" aria-label="ملخص الفرق">
+    <div class="stat">
+      <strong>06</strong>
+      <span>فرق متكاملة</span>
+    </div>
+    <div class="stat">
+      <strong>عن بُعد</strong>
+      <span>فرص للتعاون</span>
+    </div>
+    <div class="stat">
+      <strong>هدف واحد</strong>
+      <span>ابتكار وأثر مستدام</span>
+    </div>
+  </div>
+
+  <section id="all-teams">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">مجتمع النادي</span>
+        <h2>تعرّف على فرق النادي</h2>
+        <p>
+          لكل فريق دور محدد، وتتكامل الأدوار لتطوير الأفكار وتنظيم الأنشطة
+          وتعزيز مشاركة الطلاب والطالبات.
+        </p>
+      </div>
+
+      <div class="team-tools">
+        <div class="search-box">
+          <input
+            type="search"
+            id="team-search"
+            placeholder="ابحث عن فريق أو مهمة..."
+            aria-label="البحث عن فريق">
+        </div>
+
+        <div class="filters" aria-label="تصفية الفرق">
+          <button class="filter-btn active" type="button" data-filter="all">جميع الفرق</button>
+          <button class="filter-btn" type="button" data-filter="ideas">الأفكار والمشاريع</button>
+          <button class="filter-btn" type="button" data-filter="media">الإعلام والتواصل</button>
+          <button class="filter-btn" type="button" data-filter="operations">التنظيم والتنفيذ</button>
+        </div>
+      </div>
+
+      <div class="team-grid" id="team-grid">
+
+        <article class="team-card" data-category="ideas" data-search="الابتكار الأفكار البحث العصف الذهني حل المشكلات تطوير الحلول">
+          <div class="team-top">
+            <div class="team-icon" aria-hidden="true">💡</div>
+            <span class="team-number">TEAM 01</span>
+          </div>
+          <div class="team-body">
+            <span class="team-type">تطوير الأفكار</span>
+            <h3>فريق الابتكار</h3>
+            <p>يساعد على تحويل التحديات إلى أفكار إبداعية قابلة للدراسة والتطوير.</p>
+            <div class="task-title">أبرز المهام</div>
+            <ul class="task-list">
+              <li>تنظيم جلسات العصف الذهني.</li>
+              <li>دراسة المشكلات والفرص.</li>
+              <li>تطوير الأفكار إلى تصورات أولية.</li>
+            </ul>
+            <div class="team-footer">
+              <button class="btn btn-outline details-btn" type="button" data-team="innovation">تفاصيل الفريق</button>
+              <button class="btn btn-primary select-team" type="button" data-team-name="فريق الابتكار">اختر الفريق</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" data-category="ideas" data-search="ريادة الأعمال المشاريع نماذج الأعمال دراسة الجدوى المبادرات المنافسات">
+          <div class="team-top">
+            <div class="team-icon" aria-hidden="true">🚀</div>
+            <span class="team-number">TEAM 02</span>
+          </div>
+          <div class="team-body">
+            <span class="team-type">المشاريع الريادية</span>
+            <h3>فريق ريادة الأعمال</h3>
+            <p>يدعم تطوير الأفكار الريادية وفهم احتياجات المستفيدين وفرص التنفيذ.</p>
+            <div class="task-title">أبرز المهام</div>
+            <ul class="task-list">
+              <li>تطوير نماذج الأعمال الأولية.</li>
+              <li>استكشاف المسابقات والفرص الريادية.</li>
+              <li>تنظيم ورش التخطيط للمشروعات.</li>
+            </ul>
+            <div class="team-footer">
+              <button class="btn btn-outline details-btn" type="button" data-team="entrepreneurship">تفاصيل الفريق</button>
+              <button class="btn btn-primary select-team" type="button" data-team-name="فريق ريادة الأعمال">اختر الفريق</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" data-category="ideas" data-search="التقنية البرمجة المواقع التطبيقات الذكاء الاصطناعي البيانات النماذج الأولية">
+          <div class="team-top">
+            <div class="team-icon" aria-hidden="true">💻</div>
+            <span class="team-number">TEAM 03</span>
+          </div>
+          <div class="team-body">
+            <span class="team-type">الحلول الرقمية</span>
+            <h3>فريق التقنية</h3>
+            <p>يسهم في تحويل الأفكار إلى نماذج رقمية وحلول تقنية أولية.</p>
+            <div class="task-title">أبرز المهام</div>
+            <ul class="task-list">
+              <li>تطوير المواقع والواجهات التجريبية.</li>
+              <li>استكشاف تطبيقات الذكاء الاصطناعي.</li>
+              <li>دعم الفرق بالأدوات والحلول التقنية.</li>
+            </ul>
+            <div class="team-footer">
+              <button class="btn btn-outline details-btn" type="button" data-team="technology">تفاصيل الفريق</button>
+              <button class="btn btn-primary select-team" type="button" data-team-name="فريق التقنية">اختر الفريق</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" data-category="media" data-search="الإعلام التسويق التصميم المحتوى النشر الهوية البصرية الإعلان التغطية">
+          <div class="team-top">
+            <div class="team-icon" aria-hidden="true">📣</div>
+            <span class="team-number">TEAM 04</span>
+          </div>
+          <div class="team-body">
+            <span class="team-type">الإعلام والهوية</span>
+            <h3>فريق الإعلام والتسويق</h3>
+            <p>يعرض هوية النادي وأنشطته بأسلوب واضح وجذاب، ويوصل رسالته إلى المجتمع الجامعي.</p>
+            <div class="task-title">أبرز المهام</div>
+            <ul class="task-list">
+              <li>إعداد التصاميم والإعلانات.</li>
+              <li>صياغة المحتوى الإعلامي.</li>
+              <li>تغطية الأنشطة وتوثيقها.</li>
+            </ul>
+            <div class="team-footer">
+              <button class="btn btn-outline details-btn" type="button" data-team="media">تفاصيل الفريق</button>
+              <button class="btn btn-primary select-team" type="button" data-team-name="فريق الإعلام والتسويق">اختر الفريق</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" data-category="operations" data-search="الفعاليات التنظيم التخطيط اللقاءات الورش الجداول التنسيق إدارة الوقت">
+          <div class="team-top">
+            <div class="team-icon" aria-hidden="true">🗓️</div>
+            <span class="team-number">TEAM 05</span>
+          </div>
+          <div class="team-body">
+            <span class="team-type">التخطيط والتنفيذ</span>
+            <h3>فريق الفعاليات</h3>
+            <p>يساعد في تخطيط الأنشطة واللقاءات والورش ومتابعة تفاصيل تنفيذها.</p>
+            <div class="task-title">أبرز المهام</div>
+            <ul class="task-list">
+              <li>إعداد الخطط والجداول الزمنية.</li>
+              <li>تنسيق اللقاءات والورش عن بُعد.</li>
+              <li>متابعة التجهيزات وتقييم النتائج.</li>
+            </ul>
+            <div class="team-footer">
+              <button class="btn btn-outline details-btn" type="button" data-team="events">تفاصيل الفريق</button>
+              <button class="btn btn-primary select-team" type="button" data-team-name="فريق الفعاليات">اختر الفريق</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card" data-category="operations" data-search="فريق المناطق المناطق الجغرافية التمثيل المحلي المشاركة الميدانية الفعاليات المحلية التواصل">
+          <div class="team-top">
+            <div class="team-icon" aria-hidden="true">🌍</div>
+            <span class="team-number">TEAM 06</span>
+          </div>
+          <div class="team-body">
+            <span class="team-type">الامتداد الجغرافي</span>
+            <h3>فريق المناطق</h3>
+            <p>يعزز مشاركة الطلاب والطالبات في مناطقهم الجغرافية، ويدعم حضور النادي في الفعاليات المناسبة محليًا.</p>
+            <div class="task-title">أبرز المهام</div>
+            <ul class="task-list">
+              <li>رصد الفعاليات والفرص في المناطق.</li>
+              <li>تنسيق المشاركة المحلية عند توفر الفرص والموافقات اللازمة.</li>
+              <li>نقل الخبرات والمقترحات إلى النادي.</li>
+            </ul>
+            <div class="team-footer">
+              <button class="btn btn-outline details-btn" type="button" data-team="regions">تفاصيل الفريق</button>
+              <button class="btn btn-primary select-team" type="button" data-team-name="فريق المناطق">اختر الفريق</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="no-results" id="no-results" hidden>
+          لم نعثر على فريق يطابق البحث. جرّب كلمة أخرى.
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="regions">
+    <div class="container">
+      <div class="regions-panel">
+        <div class="regions-art" aria-hidden="true">🌐</div>
+        <div class="regions-copy">
+          <span class="team-type">مشاركة تتجاوز المسافات</span>
+          <h3>فريق المناطق</h3>
+          <p>
+            لأن النادي يعمل عن بُعد، يمكن للطلاب والطالبات الاستفادة من الفرص
+            المناسبة في مناطقهم، والتعاون مع زملائهم، والمساهمة في إبراز اسم
+            الجامعة من خلال المشاركات التي تتاح وفق الإجراءات والموافقات المطلوبة.
+          </p>
+          <ul class="region-points">
+            <li>التعرّف على الفعاليات والمنافسات المحلية المناسبة.</li>
+            <li>تعزيز التواصل والتعاون بين المشاركين في المناطق.</li>
+            <li>اكتساب خبرة عملية في تمثيل المبادرات والعمل الجماعي.</li>
+            <li>مشاركة ملخصات التجارب والفرص للاستفادة منها داخل النادي.</li>
+          </ul>
+          <button class="btn btn-primary select-team" type="button" data-team-name="فريق المناطق">
+            أبدِ اهتمامك بفريق المناطق
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">رحلتك داخل الفريق</span>
+        <h2>كيف تتحول مشاركتك إلى أثر؟</h2>
+        <p>خطوات تنظيمية مقترحة تساعد على وضوح الأدوار والتعاون بين أعضاء الفريق.</p>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="workflow-step">
+          <div class="step-number">01</div>
+          <h3>اختر المجال</h3>
+          <p>حدّد الفريق الذي يتوافق مع اهتماماتك والمهارات التي ترغب في تطويرها.</p>
+        </article>
+
+        <article class="workflow-step">
+          <div class="step-number">02</div>
+          <h3>حدّد مساهمتك</h3>
+          <p>وضّح المهارات التي تمتلكها أو المهام التي ترغب في تعلمها.</p>
+        </article>
+
+        <article class="workflow-step">
+          <div class="step-number">03</div>
+          <h3>تعاون مع الفريق</h3>
+          <p>شارك في التخطيط وتبادل المعرفة والعمل على المهام المتفق عليها.</p>
+        </article>
+
+        <article class="workflow-step">
+          <div class="step-number">04</div>
+          <h3>قيّم وتطوّر</h3>
+          <p>راجع ما تعلمته، ووثّق النتائج، واقترح تحسينات للخطوات القادمة.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-section" id="join-team">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">خطوتك القادمة</span>
+        <h2>أي فريق يناسبك؟</h2>
+        <p>اختر المجال الذي يهمك، ووضّح كيف ترغب في المساهمة.</p>
+      </div>
+
+      <div class="join-layout">
+        <aside class="join-copy">
+          <h3>مكانك يبدأ من اهتمامك</h3>
+          <p>
+            ليس مطلوبًا أن تمتلك كل المهارات من البداية. الاهتمام والاستعداد
+            للتعلم والتعاون يمكن أن تكون نقطة انطلاق جيدة.
+          </p>
+          <ul>
+            <li>اختر مجالًا تهتم به.</li>
+            <li>وضّح المهارات التي تريد تقديمها أو اكتسابها.</li>
+            <li>اقترح طريقة يمكنك من خلالها دعم الفريق.</li>
+          </ul>
+          <p>
+            ملاحظة: اختيار الفريق في هذه الصفحة للتجربة فقط، ولا يُعد تسجيلًا
+            رسميًا أو تأكيدًا للانضمام.
+          </p>
+        </aside>
+
+        <form class="join-form" id="team-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="member-name">الاسم</label>
+              <input id="member-name" name="member-name" type="text" placeholder="اكتب اسمك" required>
+            </div>
+
+            <div class="field">
+              <label for="member-email">البريد الإلكتروني</label>
+              <input id="member-email" name="member-email" type="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="field full">
+              <label for="member-team">الفريق الذي تهتم به</label>
+              <select id="member-team" name="member-team" required>
+                <option value="">اختر الفريق</option>
+                <option>فريق الابتكار</option>
+                <option>فريق ريادة الأعمال</option>
+                <option>فريق التقنية</option>
+                <option>فريق الإعلام والتسويق</option>
+                <option>فريق الفعاليات</option>
+                <option>فريق المناطق</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="member-skills">مهاراتك أو اهتماماتك</label>
+              <input id="member-skills" name="member-skills" type="text" placeholder="مثل: التصميم، البرمجة، التنظيم، الكتابة">
+            </div>
+
+            <div class="field full">
+              <label for="member-message">كيف ترغب في المساهمة؟</label>
+              <textarea id="member-message" name="member-message" placeholder="اكتب نبذة قصيرة عن اهتمامك ومساهمتك المقترحة"></textarea>
+            </div>
+          </div>
+
+          <div class="demo-notice">
+            هذا نموذج تجريبي للواجهة فقط. لا يتم إرسال البيانات أو تخزينها.
+            يلزم ربطه بخدمة معتمدة قبل استخدامه للتسجيل الفعلي.
+          </div>
+
+          <button class="btn btn-primary" type="submit">معاينة اختياري</button>
+          <p class="form-message" id="team-form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <h2>الأفكار تنمو عندما نعمل معًا</h2>
+    <p>اختر مجال اهتمامك، وكن جزءًا من رحلة الابتكار وريادة الأعمال.</p>
+    <a class="btn btn-white" href="projects.html">استكشف المشاريع</a>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>نادي الابتكار وريادة الأعمال</strong></p>
+  <p>الجامعة الإسلامية بمنيسوتا</p>
+  <p>مساحة للتعاون والتعلّم وتطوير المبادرات.</p>
 </footer>
-<script src="script.js"></script>
+
+<!-- نافذة تفاصيل الفرق -->
+<div class="modal" id="team-modal" hidden>
+  <div
+    class="modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-description">
+    <div class="modal-head">
+      <h2 id="modal-title">تفاصيل الفريق</h2>
+      <button class="modal-close" type="button" id="modal-close" aria-label="إغلاق النافذة">×</button>
+    </div>
+    <p id="modal-description"></p>
+    <h3 style="color:#085982;">المهام المقترحة</h3>
+    <ul id="modal-tasks"></ul>
+    <button class="btn btn-primary" id="modal-choose" type="button">اختر هذا الفريق</button>
+  </div>
+</div>
+
+<script>
+  // قائمة الجوال
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.getElementById("main-nav");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "إغلاق القائمة" : "فتح القائمة");
+    menuToggle.textContent = isOpen ? "×" : "☰";
+  });
+
+  mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "فتح القائمة");
+      menuToggle.textContent = "☰";
+    });
+  });
+
+  // بيانات تفاصيل الفرق
+  const teamDetails = {
+    innovation: {
+      name: "فريق الابتكار",
+      description: "يركز على استكشاف التحديات، وتوليد الأفكار، وتطوير حلول أولية قابلة للدراسة والتجربة.",
+      tasks: [
+        "إعداد جلسات لتوليد الأفكار.",
+        "تحليل المشكلات واحتياجات المستفيدين.",
+        "تقييم الأفكار وفق معايير واضحة.",
+        "التعاون مع فريق التقنية لتطوير النماذج الأولية."
+      ],
+      select: "فريق الابتكار"
+    },
+    entrepreneurship: {
+      name: "فريق ريادة الأعمال",
+      description: "يساعد على فهم الجوانب الريادية للفكرة، ودراسة المستفيدين، وبناء تصور أولي للمشروع.",
+      tasks: [
+        "تحديد الفئة المستفيدة والقيمة المقدمة.",
+        "استكشاف نماذج الأعمال المناسبة.",
+        "التعرّف على المنافسات والفرص الريادية.",
+        "تنظيم أنشطة تثقيفية في ريادة الأعمال."
+      ],
+      select: "فريق ريادة الأعمال"
+    },
+    technology: {
+      name: "فريق التقنية",
+      description: "يسهم في توظيف الأدوات الرقمية والتقنية لتجربة الأفكار وتطوير نماذج أولية.",
+      tasks: [
+        "استكشاف أدوات البرمجة وتطوير المواقع.",
+        "تصميم نماذج أولية للحلول الرقمية.",
+        "تجربة أدوات الذكاء الاصطناعي المناسبة.",
+        "تقديم دعم تقني للمبادرات والفرق."
+      ],
+      select: "فريق التقنية"
+    },
+    media: {
+      name: "فريق الإعلام والتسويق",
+      description: "يعزز حضور النادي وهويته من خلال المحتوى والتصميم والتواصل مع المجتمع الجامعي.",
+      tasks: [
+        "إعداد التصاميم والإعلانات.",
+        "كتابة الأخبار والتعريف بالمبادرات.",
+        "تجهيز خطط النشر والتغطية.",
+        "الحفاظ على اتساق الهوية البصرية."
+      ],
+      select: "فريق الإعلام والتسويق"
+    },
+    events: {
+      name: "فريق الفعاليات",
+      description: "يساعد على تحويل الخطط إلى لقاءات وورش وأنشطة منظمة يمكن تنفيذها حضوريًا أو عن بُعد.",
+      tasks: [
+        "إعداد الجداول الزمنية للفعاليات.",
+        "تنسيق اللقاءات والورش.",
+        "تحديد المتطلبات وتوزيع المهام.",
+        "جمع الملاحظات وتقييم النتائج."
+      ],
+      select: "فريق الفعاليات"
+    },
+    regions: {
+      name: "فريق المناطق",
+      description: "يدعم التواصل بين المشاركين في المناطق المختلفة، ويساعد في استكشاف فرص المشاركة المحلية المناسبة.",
+      tasks: [
+        "رصد الفعاليات والفرص في المناطق.",
+        "تنسيق التواصل بين المشاركين.",
+        "المساهمة في المشاركات المحلية بعد استكمال الموافقات اللازمة.",
+        "نقل التجارب والفرص إلى النادي."
+      ],
+      select: "فريق المناطق"
+    }
+  };
+
+  const modal = document.getElementById("team-modal");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const modalTasks = document.getElementById("modal-tasks");
+  const modalClose = document.getElementById("modal-close");
+  const modalChoose = document.getElementById("modal-choose");
+  let previousFocus = null;
+  let activeTeamName = "";
+
+  function openTeamModal(key, trigger) {
+    const team = teamDetails[key];
+    if (!team) return;
+
+    previousFocus = trigger || document.activeElement;
+    activeTeamName = team.select;
+    modalTitle.textContent = team.name;
+    modalDescription.textContent = team.description;
+    modalTasks.replaceChildren();
+
+    team.tasks.forEach((task) => {
+      const item = document.createElement("li");
+      item.textContent = task;
+      modalTasks.appendChild(item);
+    });
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    modalClose.focus();
+  }
+
+  function closeTeamModal() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    if (previousFocus && typeof previousFocus.focus === "function") {
+      previousFocus.focus();
+    }
+  }
+
+  document.querySelectorAll(".details-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      openTeamModal(button.dataset.team, button);
+    });
+  });
+
+  modalClose.addEventListener("click", closeTeamModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeTeamModal();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) {
+      closeTeamModal();
+    }
+  });
+
+  // اختيار الفريق من البطاقة أو النافذة
+  const teamSelect = document.getElementById("member-team");
+
+  function chooseTeam(teamName) {
+    teamSelect.value = teamName;
+    document.getElementById("join-team").scrollIntoView({ behavior: "smooth" });
+    teamSelect.focus({ preventScroll: true });
+    document.getElementById("team-form-message").textContent =
+      "تم اختيار " + teamName + " في النموذج التجريبي. يمكنك إكمال الحقول لمعاينة الاختيار.";
+  }
+
+  document.querySelectorAll(".select-team").forEach((button) => {
+    button.addEventListener("click", () => {
+      chooseTeam(button.dataset.teamName);
+    });
+  });
+
+  modalChoose.addEventListener("click", () => {
+    const name = activeTeamName;
+    closeTeamModal();
+    chooseTeam(name);
+  });
+
+  // تصفية الفرق والبحث
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".team-card");
+  const searchInput = document.getElementById("team-search");
+  const noResults = document.getElementById("no-results");
+  let currentFilter = "all";
+
+  function filterTeams() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const categoryMatch =
+        currentFilter === "all" || card.dataset.category === currentFilter;
+
+      const searchText = (
+        card.dataset.search + " " + card.innerText
+      ).toLowerCase();
+
+      const searchMatch = searchText.includes(query);
+      const show = categoryMatch && searchMatch;
+
+      card.hidden = !show;
+      if (show) visibleCount++;
+    });
+
+    noResults.hidden = visibleCount !== 0;
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      currentFilter = button.dataset.filter;
+
+      filterButtons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+
+      filterTeams();
+    });
+  });
+
+  searchInput.addEventListener("input", filterTeams);
+
+  // النموذج تجريبي: لا إرسال ولا تخزين للبيانات
+  document.getElementById("team-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("member-name").value.trim();
+    const team = teamSelect.value;
+
+    document.getElementById("team-form-message").textContent =
+      "شكرًا " + name + "، تمت معاينة اختيارك لـ" + team +
+      ". لم تُرسل البيانات ولم تُحفظ. يلزم ربط النموذج بخدمة معتمدة لتفعيل التسجيل الفعلي.";
+  });
+</script>
+
 </body>
 </html>
