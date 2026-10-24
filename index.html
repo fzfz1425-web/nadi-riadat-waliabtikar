@@ -8,7 +8,501 @@
   <meta name="theme-color" content="#085982">
   <title>الرئيسية | نادي الابتكار وريادة الأعمال</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --navy: #085982;
+      --blue: #2DAFEB;
+      --page: #f3f9fc;
+      --white: #fff;
+      --text: #243746;
+      --muted: #657786;
+      --border: #e1edf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Tajawal', Tahoma, Arial, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button { font: inherit; cursor: pointer; }
+
+    img { max-width: 100%; display: block; }
+
+    .top-logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 5%;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-logos img {
+      width: 82px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 5%;
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      padding: 0;
+      border: 1px solid var(--blue);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--navy);
+      font-size: 22px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--page);
+      color: var(--navy);
+      font-size: 23px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+
+    .nav-links .nav-cta {
+      background: var(--navy);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 10px;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: var(--blue);
+      color: white;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 20px;
+      text-align: center;
+      color: white;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(45,175,235,.35), transparent 28%),
+        linear-gradient(135deg, #085982, #1688b7);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      left: -100px;
+      bottom: -150px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 30px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.45;
+      margin: 17px 0;
+      font-weight: 800;
+    }
+
+    .hero h1 span { color: #bcecff; }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #edfaff;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 20px;
+      font-weight: 800;
+      text-align: center;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-primary:hover { background: #064565; }
+
+    .btn-light {
+      background: white;
+      color: var(--navy);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.65);
+      background: transparent;
+      color: white;
+    }
+
+    .hero-points {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 25px;
+      margin-top: 28px;
+      color: #e8f8ff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    section.content-section { padding: 50px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--navy);
+      background: #e5f7ff;
+      border-color: #d1eefb;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      margin: 10px 0 7px;
+      font-size: clamp(23px, 3vw, 30px);
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      min-width: 0;
+      height: 100%;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: 0 5px 18px rgba(8,89,130,.05);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(45,175,235,.55);
+      box-shadow: 0 12px 28px rgba(8,89,130,.1);
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 13px;
+      border-radius: 15px;
+      background: #e4f6fd;
+      font-size: 27px;
+    }
+
+    .card h3 {
+      color: var(--navy);
+      margin: 5px 0 8px;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 15px;
+    }
+
+    .text-link {
+      display: inline-block;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .text-link:hover { color: var(--blue); }
+
+    .soft-section { background: #e8f6fc; }
+
+    .steps .card { border-top: 3px solid var(--blue); }
+
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(125deg, #063f5c, #085982 65%, #1688b7);
+      color: white;
+      padding: 52px 20px;
+    }
+
+    .cta h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+
+    .cta p { color: #e5f5fc; }
+
+    footer {
+      padding: 25px 5%;
+      text-align: center;
+      background: #063f5c;
+      color: #e5f5fc;
+      font-size: 13px;
+    }
+
+    footer p { margin: 5px 0; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin: 16px 0;
+    }
+
+    .footer-links a:hover { color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .nav-wrap { justify-content: space-between; }
+
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px;
+        background: var(--page);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .top-logos { padding: 8px 16px; }
+      .top-logos img { width: 66px; height: 53px; }
+
+      .site-header { padding: 11px 5%; }
+
+      .brand {
+        max-width: 58%;
+        font-size: 15px;
+      }
+
+      .header-actions { gap: 5px; }
+
+      .theme-toggle,
+      .menu-toggle {
+        width: 39px;
+        height: 39px;
+        min-width: 39px;
+      }
+
+      .hero { padding: 48px 18px; }
+      .hero p { font-size: 15px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .hero-points { gap: 8px 14px; }
+
+      section.content-section { padding: 36px 0; }
+
+      .card-grid { grid-template-columns: 1fr; }
+      .card { padding: 21px; }
+
+      .cta { padding: 40px 18px; }
+    }
+
+    /* الوضع الداكن */
+    html[data-theme="dark"] {
+      --page: #101923;
+      --white: #172532;
+      --text: #edf4fa;
+      --muted: #b7c8d5;
+      --border: #344b5e;
+    }
+
+    html[data-theme="dark"] body { background: var(--page); color: var(--text); }
+
+    html[data-theme="dark"] .top-logos,
+    html[data-theme="dark"] .site-header { background: #172532; }
+
+    html[data-theme="dark"] .brand,
+    html[data-theme="dark"] .section-heading h2,
+    html[data-theme="dark"] .card h3,
+    html[data-theme="dark"] .text-link { color: #edf4fa; }
+
+    html[data-theme="dark"] .soft-section { background: #14212d; }
+
+    html[data-theme="dark"] .card {
+      background: #1b2b3a;
+      border-color: #344b5e;
+    }
+
+    html[data-theme="dark"] .card-icon { background: #263f50; }
+
+    html[data-theme="dark"] .section-heading .eyebrow {
+      background: #203b4d;
+      color: #bcecff;
+      border-color: #344b5e;
+    }
+
+    html[data-theme="dark"] .nav-links {
+      background: #172532;
+      border-color: #344b5e;
+    }
+
+    html[data-theme="dark"] .nav-links a { color: #edf4fa; }
+
+    html[data-theme="dark"] .nav-links a.active,
+    html[data-theme="dark"] .nav-links a:hover { color: #6acbfa; }
+
+    html[data-theme="dark"] .menu-toggle {
+      background: #203b4d;
+      color: #edf4fa;
+      border-color: #344b5e;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="top-logos">
@@ -16,171 +510,171 @@
     <img src="IMG_1948.JPG" alt="شعار نادي الابتكار وريادة الأعمال">
   </div>
 
-  <header class="header">
-    <a class="logo" href="index.html">نادي الابتكار وريادة الأعمال</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">نادي الابتكار وريادة الأعمال</a>
 
-    <div class="header-actions">
-      <button
-        class="theme-toggle"
-        id="theme-toggle"
-        type="button"
-        aria-label="التبديل إلى الوضع الداكن"
-        title="تغيير مظهر الموقع">🌙</button>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button"
+          aria-label="التبديل إلى الوضع الداكن"
+          title="تغيير المظهر">🌙</button>
 
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="فتح قائمة التنقل"
-        aria-controls="main-navigation"
-        aria-expanded="false">☰</button>
+        <button class="menu-toggle" type="button"
+          aria-label="فتح قائمة التنقل"
+          aria-controls="main-nav"
+          aria-expanded="false">☰</button>
+      </div>
+
+      <nav class="nav-links" id="main-nav" aria-label="القائمة الرئيسية">
+        <a class="active" href="index.html" aria-current="page">الرئيسية</a>
+        <a href="about.html">عن النادي</a>
+        <a href="teams.html">الفرق</a>
+        <a href="events.html">الفعاليات</a>
+        <a href="projects.html">المشاريع</a>
+        <a href="contact.html">تواصل معنا</a>
+        <a class="nav-cta" href="join.html">انضم إلى النادي</a>
+      </nav>
     </div>
-
-    <nav class="nav" id="main-navigation" aria-label="القائمة الرئيسية">
-      <a class="active" href="index.html" aria-current="page">الرئيسية</a>
-      <a href="about.html">عن النادي</a>
-      <a href="teams.html">الفرق</a>
-      <a href="events.html">الفعاليات</a>
-      <a href="projects.html">المشاريع</a>
-      <a href="contact.html">تواصل معنا</a>
-      <a class="nav-cta" href="join.html">انضم إلى النادي</a>
-    </nav>
   </header>
 
   <main>
-    <section class="hero home-hero">
+    <section class="hero">
       <div class="hero-content">
         <span class="eyebrow">نفكر • نبتكر • ننجز</span>
         <h1>فكرتك اليوم،<br><span>مشروعك غدًا</span></h1>
         <p>
-          مساحة طلابية تجمع العقول المبدعة لتحويل الأفكار إلى مشاريع،
+          مساحة طلابية تجمع العقول المبدعة لتطوير الأفكار،
           وبناء المهارات، واستكشاف فرص المشاركة في المسابقات
           والهاكاثونات والفعاليات.
         </p>
 
-        <div class="actions">
-          <a class="btn" href="join.html">اكتشف الانضمام ←</a>
-          <a class="btn btn-outline" href="about.html">تعرّف على النادي</a>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="join.html">تعرّف على الانضمام ←</a>
+          <a class="btn btn-outline" href="about.html">اكتشف النادي</a>
         </div>
 
-        <div class="hero-highlights">
+        <div class="hero-points">
           <span>✦ تطوير المهارات</span>
           <span>✦ العمل الجماعي</span>
           <span>✦ صناعة الفرص</span>
         </div>
       </div>
+    </section>
 
-      <div class="hero-image" aria-label="مساحة بصرية تعبّر عن الابتكار">
-        <div class="hero-orbit orbit-one"></div>
-        <div class="hero-orbit orbit-two"></div>
-        <div class="hero-symbol">✦</div>
-        <div class="image-note">كل فكرة تستحق فرصة</div>
+    <section class="content-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">وجهتنا</span>
+          <h2>من الفكرة إلى الأثر</h2>
+          <p>نعمل معًا لخلق تجربة جامعية أكثر إبداعًا وتعاونًا.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💡</div>
+            <h3>الابتكار</h3>
+            <p>اكتشاف التحديات وصناعة أفكار وحلول جديدة تضيف قيمة.</p>
+            <a class="text-link" href="about.html">تعرّف على النادي ←</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🚀</div>
+            <h3>ريادة الأعمال</h3>
+            <p>تطوير الأفكار وتحويلها إلى مبادرات ومشاريع قابلة للنمو.</p>
+            <a class="text-link" href="projects.html">استكشف المشاريع ←</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤝</div>
+            <h3>العمل الجماعي</h3>
+            <p>تكوين فرق تتشارك الخبرات وتعمل معًا لتحقيق الأهداف.</p>
+            <a class="text-link" href="teams.html">تعرّف على الفرق ←</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section home-intro">
-      <div class="section-heading">
-        <span class="eyebrow">وجهتنا</span>
-        <h2>من الفكرة إلى الأثر</h2>
-        <p>نعمل معًا لخلق تجربة جامعية أكثر إبداعًا وتعاونًا.</p>
-      </div>
+    <section class="content-section soft-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">مجالات المشاركة</span>
+          <h2>مساحتك لتجربة شيء جديد</h2>
+          <p>تعلّم، شارك، وطوّر مهاراتك مع مجتمع النادي.</p>
+        </div>
 
-      <div class="grid grid-3">
-        <article class="card home-card">
-          <div class="icon" aria-hidden="true">💡</div>
-          <h3>الابتكار</h3>
-          <p>اكتشاف التحديات وصناعة أفكار وحلول جديدة تضيف قيمة.</p>
-        </article>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🏆</div>
+            <h3>الفعاليات والهاكاثونات</h3>
+            <p>استكشف فرص المسابقات والورش والهاكاثونات، واستعد للتعلم والمشاركة وفق الفرص المتاحة.</p>
+            <a class="text-link" href="events.html">استكشف الفعاليات ←</a>
+          </article>
 
-        <article class="card home-card">
-          <div class="icon" aria-hidden="true">🚀</div>
-          <h3>ريادة الأعمال</h3>
-          <p>تطوير الأفكار وتحويلها إلى مبادرات ومشاريع قابلة للنمو.</p>
-        </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧩</div>
+            <h3>المشاريع الطلابية</h3>
+            <p>مساحة لعرض الأفكار، وتكوين الفرق، وتطوير المبادرات والمشاريع المشتركة.</p>
+            <a class="text-link" href="projects.html">اكتشف المشاريع ←</a>
+          </article>
 
-        <article class="card home-card">
-          <div class="icon" aria-hidden="true">🤝</div>
-          <h3>العمل الجماعي</h3>
-          <p>تكوين فرق تتشارك الخبرات وتعمل معًا لتحقيق الأهداف.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section soft home-opportunities">
-      <div class="section-heading">
-        <span class="eyebrow">مجالات المشاركة</span>
-        <h2>مساحتك لتجربة شيء جديد</h2>
-        <p>تعلّم، شارك، وطوّر مهاراتك مع مجتمع النادي.</p>
-      </div>
-
-      <div class="grid grid-2">
-        <article class="card opportunity-card">
-          <div class="icon" aria-hidden="true">🏆</div>
-          <h3>الفعاليات والهاكاثونات</h3>
-          <p>
-            تعرّف على فرص المسابقات والورش والهاكاثونات،
-            واستعد للمشاركة والتعلّم وفق الفرص المتاحة.
-          </p>
-          <a class="text-link" href="events.html">استكشف الفعاليات ←</a>
-        </article>
-
-        <article class="card opportunity-card">
-          <div class="icon" aria-hidden="true">🧩</div>
-          <h3>المشاريع الطلابية</h3>
-          <p>
-            مساحة لعرض الأفكار، وتكوين الفرق،
-            وتطوير المبادرات والمشاريع المشتركة.
-          </p>
-          <a class="text-link" href="projects.html">اكتشف المشاريع ←</a>
-        </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🌐</div>
+            <h3>فريق المناطق</h3>
+            <p>التعاون بين الطلاب في مناطقهم والمساهمة في الأنشطة والفرص المتاحة محليًا.</p>
+            <a class="text-link" href="teams.html">تعرّف على الفرق ←</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section home-journey">
-      <div class="section-heading">
-        <span class="eyebrow">رحلتك معنا</span>
-        <h2>كل إنجاز يبدأ بخطوة</h2>
-        <p>ابدأ باهتمامك، وامنح فكرتك فرصة للنمو.</p>
-      </div>
+    <section class="content-section steps">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">رحلتك معنا</span>
+          <h2>كل إنجاز يبدأ بخطوة</h2>
+          <p>ابدأ باهتمامك، وامنح فكرتك فرصة للنمو.</p>
+        </div>
 
-      <div class="grid grid-3">
-        <article class="card journey-card">
-          <div class="journey-number">01</div>
-          <h3>اكتشف</h3>
-          <p>تعرّف على النادي ومجالاته وفرص المشاركة.</p>
-        </article>
+        <div class="card-grid">
+          <article class="card">
+            <div class="step-number">01</div>
+            <h3>اكتشف</h3>
+            <p>تعرّف على النادي ومجالاته وفرص المشاركة.</p>
+          </article>
 
-        <article class="card journey-card">
-          <div class="journey-number">02</div>
-          <h3>شارك</h3>
-          <p>تبادل الخبرات وتعاون مع المهتمين بالأفكار الجديدة.</p>
-        </article>
+          <article class="card">
+            <div class="step-number">02</div>
+            <h3>شارك</h3>
+            <p>تبادل الخبرات وتعاون مع المهتمين بالأفكار الجديدة.</p>
+          </article>
 
-        <article class="card journey-card">
-          <div class="journey-number">03</div>
-          <h3>أنجز</h3>
-          <p>طوّر مهاراتك وساهم في مبادرات ذات أثر إيجابي.</p>
-        </article>
+          <article class="card">
+            <div class="step-number">03</div>
+            <h3>أنجز</h3>
+            <p>طوّر مهاراتك وساهم في مبادرات ذات أثر إيجابي.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="cta-section home-cta">
-      <span class="eyebrow">المستقبل يبدأ بفكرة</span>
-      <h2>لديك فكرة تستحق أن ترى النور؟</h2>
-      <p>ابدأ رحلتك معنا، وكن جزءًا من مجتمع يصنع الفرص.</p>
-      <a class="btn btn-light" href="join.html">تعرّف على الانضمام ←</a>
+    <section class="cta">
+      <div class="container">
+        <h2>لديك فكرة تستحق أن ترى النور؟</h2>
+        <p>ابدأ رحلتك معنا، وكن جزءًا من مجتمع يصنع الفرص.</p>
+        <a class="btn btn-light" href="join.html">تعرّف على الانضمام ←</a>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <a class="logo footer-logo" href="index.html">
-      نادي الابتكار وريادة الأعمال
-    </a>
+  <footer>
+    <strong>نادي الابتكار وريادة الأعمال</strong>
     <p>الجامعة الإسلامية بمنيسوتا</p>
     <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
 
     <div class="footer-links">
       <a href="about.html">عن النادي</a>
       <a href="events.html">الفعاليات</a>
+      <a href="projects.html">المشاريع</a>
       <a href="contact.html">تواصل معنا</a>
       <a href="join.html">انضم إلينا</a>
     </div>
