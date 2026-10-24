@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,17 @@
       --border: #e1edf3;
     }
 
+    html[data-theme="dark"] {
+      --light: #101e29;
+      --white: #192b39;
+      --text: #edf6fb;
+      --muted: #b1c4d0;
+      --border: #304757;
+    }
+
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -31,23 +41,41 @@
 
     a { text-decoration: none; color: inherit; }
 
-    button, input, textarea, select {
-      font: inherit;
+    button, input, textarea, select { font: inherit; }
+
+    .top-logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 5%;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-logos img {
+      width: 82px;
+      height: 65px;
+      object-fit: contain;
     }
 
     .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: var(--white);
       border-bottom: 1px solid var(--border);
-      padding: 15px 5%;
+      padding: 14px 5%;
     }
 
     .nav-wrap {
+      width: 100%;
       max-width: 1200px;
       margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
@@ -57,15 +85,45 @@
       font-size: 19px;
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-toggle,
+    .menu-toggle {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--light);
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 21px;
+    }
+
+    .menu-toggle { display: none; }
+
     .nav-links {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 15px;
       font-size: 13px;
+      font-weight: bold;
     }
 
     .nav-links a:hover,
     .nav-links a.active { color: var(--blue); }
+
+    .nav-links .nav-cta {
+      background: var(--navy);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 10px;
+    }
 
     .container {
       width: min(1100px, 90%);
@@ -109,16 +167,8 @@
       text-align: center;
     }
 
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .btn-light {
-      background: white;
-      color: var(--navy);
-    }
-
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-light { background: white; color: #085982; }
     .hero .btn { margin-top: 23px; }
 
     section { padding: 48px 0; }
@@ -148,7 +198,7 @@
     }
 
     .filter-btn {
-      background: white;
+      background: var(--white);
       color: var(--navy);
       border: 1px solid var(--border);
       border-radius: 25px;
@@ -168,11 +218,11 @@
     }
 
     .project-card {
-      background: white;
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: 17px;
       overflow: hidden;
-      box-shadow: 0 5px 18px rgba(8, 89, 130, .05);
+      box-shadow: 0 5px 18px rgba(8,89,130,.05);
     }
 
     .project-art {
@@ -214,6 +264,7 @@
       padding: 4px 9px;
       background: #fff2d8;
       color: #805b12;
+      margin-bottom: 8px;
     }
 
     .status.done {
@@ -234,7 +285,7 @@
     }
 
     .feature-card {
-      background: white;
+      background: var(--white);
       border: 1px solid var(--border);
       padding: 23px;
       border-radius: 15px;
@@ -252,9 +303,9 @@
       font-size: 14px;
     }
 
-    .ideas {
-      background: #e8f6fc;
-    }
+    .ideas { background: #e8f6fc; }
+
+    html[data-theme="dark"] .ideas { background: #172f40; }
 
     .idea-list {
       display: grid;
@@ -263,7 +314,7 @@
     }
 
     .idea-option {
-      background: white;
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 15px;
@@ -274,7 +325,7 @@
 
     .idea-option.selected {
       border: 2px solid var(--blue);
-      background: #f6fcff;
+      background: var(--light);
     }
 
     .idea-option strong {
@@ -284,7 +335,7 @@
 
     .idea-option small { color: var(--muted); }
 
-    .form-section { background: white; }
+    .form-section { background: var(--white); }
 
     .project-form {
       max-width: 760px;
@@ -322,7 +373,8 @@
       padding: 11px;
       border: 1px solid #d5e4ec;
       border-radius: 9px;
-      background: white;
+      background: var(--white);
+      color: var(--text);
       outline-color: var(--blue);
     }
 
@@ -366,14 +418,57 @@
 
     [hidden] { display: none !important; }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
+      .nav-wrap { justify-content: space-between; }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px;
+        background: var(--light);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links .nav-cta {
+        margin-top: 8px;
+        text-align: center;
+      }
+
       .project-grid,
       .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .nav-wrap { justify-content: center; }
-      .nav-links { justify-content: center; }
     }
 
     @media (max-width: 540px) {
+      .top-logos { padding: 8px 16px; }
+      .top-logos img { width: 66px; height: 53px; }
+      .site-header { padding: 11px 5%; }
+      .brand { max-width: 58%; font-size: 15px; }
+      .header-actions { gap: 5px; }
+
+      .theme-toggle,
+      .menu-toggle {
+        width: 39px;
+        height: 39px;
+        min-width: 39px;
+      }
+
       .project-grid,
       .feature-grid,
       .idea-list,
@@ -382,25 +477,55 @@
       .hero { padding: 45px 18px; }
       section { padding: 35px 0; }
       .project-form { padding: 17px; }
-      .nav-links { gap: 10px; }
+    }
+
+    html[data-theme="dark"] .top-logos,
+    html[data-theme="dark"] .site-header {
+      background: #192b39;
+    }
+
+    html[data-theme="dark"] .brand,
+    html[data-theme="dark"] .nav-links a { color: #edf6fb; }
+
+    html[data-theme="dark"] .nav-links a.active,
+    html[data-theme="dark"] .nav-links a:hover { color: #6acbfa; }
+
+    html[data-theme="dark"] .nav-links .nav-cta {
+      background: #2DAFEB;
+      color: #082d43;
     }
   </style>
 </head>
 
 <body>
 
+<div class="top-logos">
+  <img src="IMG_0364.JPG" alt="شعار الجامعة الإسلامية بمنيسوتا">
+  <img src="IMG_1948.JPG" alt="شعار نادي الابتكار وريادة الأعمال">
+</div>
+
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="index.html">نادي الابتكار وريادة الأعمال</a>
 
-    <nav class="nav-links" aria-label="القائمة الرئيسية">
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button"
+        aria-label="تغيير المظهر" title="تغيير المظهر">🌙</button>
+
+      <button class="menu-toggle" type="button"
+        aria-label="فتح قائمة التنقل"
+        aria-controls="main-nav"
+        aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="nav-links" id="main-nav" aria-label="القائمة الرئيسية">
       <a href="index.html">الرئيسية</a>
       <a href="about.html">عن النادي</a>
       <a href="teams.html">الفرق</a>
       <a href="events.html">الفعاليات</a>
-      <a class="active" href="projects.html">المشاريع</a>
+      <a class="active" href="projects.html" aria-current="page">المشاريع</a>
       <a href="contact.html">تواصل معنا</a>
-      <a href="join.html">انضم إلى النادي</a>
+      <a class="nav-cta" href="join.html">انضم إلى النادي</a>
     </nav>
   </div>
 </header>
@@ -433,7 +558,6 @@
       </div>
 
       <div class="project-grid">
-
         <article class="project-card" data-status="progress">
           <div class="project-art" aria-hidden="true">💡</div>
           <div class="project-content">
@@ -499,7 +623,6 @@
             <button class="btn btn-primary choose-project" type="button" data-project="شبكة تبادل المهارات">أرغب في المشاركة</button>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -517,13 +640,11 @@
           <h3>ابحث عن فريق</h3>
           <p>تعرّف على أشخاص لديهم اهتمامات متقاربة ومهارات تكمل فكرتك.</p>
         </article>
-
         <article class="feature-card">
           <div class="emoji" aria-hidden="true">🛠️</div>
           <h3>طوّر مهاراتك</h3>
           <p>استكشف مجالات مثل البرمجة، والتصميم، وتحليل البيانات، وإدارة المشاريع.</p>
         </article>
-
         <article class="feature-card">
           <div class="emoji" aria-hidden="true">🚀</div>
           <h3>استعد للمنافسات</h3>
@@ -545,17 +666,14 @@
           <strong>📅 تنظيم الوقت الجامعي</strong>
           <small>أداة لتخطيط المهام والمواعيد الدراسية.</small>
         </button>
-
         <button class="idea-option" type="button" data-idea="منصة تعليم المهارات الرقمية">
           <strong>💻 المهارات الرقمية</strong>
           <small>مساحة لتبادل الموارد والخبرات التقنية.</small>
         </button>
-
         <button class="idea-option" type="button" data-idea="مبادرة للاستدامة">
           <strong>🌿 الاستدامة</strong>
           <small>مبادرة تعزز الوعي والممارسات المستدامة.</small>
         </button>
-
         <button class="idea-option" type="button" data-idea="مساعد ذكي للطلاب">
           <strong>🧠 مساعد ذكي للطلاب</strong>
           <small>تصور لأداة تدعم تنظيم التعلم.</small>
@@ -581,13 +699,11 @@
           <h3>حدّد المشكلة</h3>
           <p>ما الحاجة التي تريد معالجتها؟ ومن الأشخاص الذين سيستفيدون من الحل؟</p>
         </article>
-
         <article class="feature-card">
           <div class="emoji" aria-hidden="true">02</div>
           <h3>صمّم الحل</h3>
           <p>ارسم تصورًا أوليًا أو جهّز نموذجًا بسيطًا يوضح طريقة عمل الفكرة.</p>
         </article>
-
         <article class="feature-card">
           <div class="emoji" aria-hidden="true">03</div>
           <h3>اختبر وطوّر</h3>
@@ -689,7 +805,52 @@
 </footer>
 
 <script>
-  // تصفية المشاريع حسب الحالة
+  // القائمة المتجاوبة
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.getElementById("main-nav");
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "إغلاق قائمة التنقل" : "فتح قائمة التنقل"
+      );
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+  }
+
+  // الوضع الفاتح والداكن
+  const themeToggle = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("club-theme");
+  const initialTheme = savedTheme === "dark" ? "dark" : "light";
+
+  document.documentElement.setAttribute("data-theme", initialTheme);
+  updateThemeButton(initialTheme);
+
+  function updateThemeButton(theme) {
+    if (!themeToggle) return;
+    themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "dark" ? "التبديل إلى الوضع الفاتح" : "التبديل إلى الوضع الداكن"
+    );
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "light";
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("club-theme", newTheme);
+      updateThemeButton(newTheme);
+    });
+  }
+
+  // تصفية المشاريع
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
 
@@ -709,24 +870,33 @@
   // اختيار مشروع وتعبئة اسمه في النموذج
   const projectNameInput = document.getElementById("project-name");
 
+  function goToProjectForm(projectName) {
+    projectNameInput.value = projectName;
+    document.getElementById("submit-project").scrollIntoView({
+      behavior: "smooth"
+    });
+    projectNameInput.focus({ preventScroll: true });
+  }
+
   document.querySelectorAll(".choose-project").forEach((button) => {
     button.addEventListener("click", () => {
-      projectNameInput.value = button.dataset.project;
-      document.getElementById("submit-project").scrollIntoView({
-        behavior: "smooth"
-      });
-      projectNameInput.focus({ preventScroll: true });
+      goToProjectForm(button.dataset.project);
     });
   });
 
-  // اختيار فكرة من مختبر الأفكار
+  // مختبر الأفكار
   const ideaOptions = document.querySelectorAll(".idea-option");
   let selectedIdea = "";
 
   ideaOptions.forEach((option) => {
     option.addEventListener("click", () => {
-      ideaOptions.forEach((item) => item.classList.remove("selected"));
+      ideaOptions.forEach((item) => {
+        item.classList.remove("selected");
+        item.setAttribute("aria-pressed", "false");
+      });
+
       option.classList.add("selected");
+      option.setAttribute("aria-pressed", "true");
       selectedIdea = option.dataset.idea;
     });
   });
@@ -737,22 +907,17 @@
       return;
     }
 
-    projectNameInput.value = selectedIdea;
-    document.getElementById("submit-project").scrollIntoView({
-      behavior: "smooth"
-    });
-    projectNameInput.focus({ preventScroll: true });
+    goToProjectForm(selectedIdea);
   });
 
-  // النموذج تجريبي ولا يرسل أو يحفظ بيانات
+  // النموذج تجريبي ولا يرسل أو يحفظ البيانات
   document.getElementById("project-form").addEventListener("submit", (event) => {
     event.preventDefault();
 
     document.getElementById("form-message").textContent =
-      "اكتملت المعاينة بنجاح. لم يتم إرسال البيانات أو حفظها. عند ربط النموذج بخدمة مناسبة يمكن تفعيل الإرسال الفعلي.";
-
+      "اكتملت المعاينة بنجاح. لم يتم إرسال البيانات أو حفظها.";
   });
 </script>
-<script src="script.js"></script>
+
 </body>
 </html>
