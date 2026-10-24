@@ -1,114 +1,758 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#085982">
-  <meta name="description" content="تعرّف على مجالات المشاريع والأفكار الابتكارية في نادي الابتكار وريادة الأعمال.">
   <title>المشاريع | نادي الابتكار وريادة الأعمال</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --navy: #085982;
+      --blue: #2DAFEB;
+      --light: #f3f9fc;
+      --white: #fff;
+      --text: #243746;
+      --muted: #657786;
+      --border: #e1edf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 15px 5%;
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .hero {
+      padding: 65px 20px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, #085982, #1688b7);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 30px;
+      padding: 5px 16px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin: 15px 0;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #edfaff;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .btn-light {
+      background: white;
+      color: var(--navy);
+    }
+
+    .hero .btn { margin-top: 23px; }
+
+    section { padding: 48px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      margin-bottom: 7px;
+      font-size: 27px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .filter-btn {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 8px 17px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--navy);
+      color: white;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px rgba(8, 89, 130, .05);
+    }
+
+    .project-art {
+      min-height: 135px;
+      display: grid;
+      place-items: center;
+      font-size: 48px;
+      background: linear-gradient(135deg, #e4f6fd, #d3eaf5);
+    }
+
+    .project-content { padding: 19px; }
+
+    .project-content h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 19px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 20px;
+      background: #e9f7fd;
+      color: var(--navy);
+      margin: 0 0 10px 5px;
+    }
+
+    .status {
+      display: inline-block;
+      font-size: 12px;
+      border-radius: 7px;
+      padding: 4px 9px;
+      background: #fff2d8;
+      color: #805b12;
+    }
+
+    .status.done {
+      background: #e3f7eb;
+      color: #237344;
+    }
+
+    .project-card .btn {
+      width: 100%;
+      font-size: 13px;
+      padding: 9px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 23px;
+      border-radius: 15px;
+    }
+
+    .feature-card .emoji { font-size: 30px; }
+
+    .feature-card h3 {
+      color: var(--navy);
+      margin: 8px 0;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .ideas {
+      background: #e8f6fc;
+    }
+
+    .idea-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .idea-option {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px;
+      cursor: pointer;
+      text-align: right;
+      color: var(--text);
+    }
+
+    .idea-option.selected {
+      border: 2px solid var(--blue);
+      background: #f6fcff;
+    }
+
+    .idea-option strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .idea-option small { color: var(--muted); }
+
+    .form-section { background: white; }
+
+    .project-form {
+      max-width: 760px;
+      margin: auto;
+      padding: 25px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #d5e4ec;
+      border-radius: 9px;
+      background: white;
+      outline-color: var(--blue);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .notice {
+      background: #fff6df;
+      color: #73571a;
+      padding: 12px 15px;
+      border-radius: 9px;
+      font-size: 13px;
+      margin: 17px 0;
+    }
+
+    .form-message {
+      margin-top: 15px;
+      color: var(--navy);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .cta {
+      text-align: center;
+      background: var(--navy);
+      color: white;
+      padding: 45px 20px;
+    }
+
+    .cta h2 { margin-top: 0; }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #063f5c;
+      color: #e5f5fc;
+      font-size: 13px;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 800px) {
+      .project-grid,
+      .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-wrap { justify-content: center; }
+      .nav-links { justify-content: center; }
+    }
+
+    @media (max-width: 540px) {
+      .project-grid,
+      .feature-grid,
+      .idea-list,
+      .form-grid { grid-template-columns: 1fr; }
+
+      .hero { padding: 45px 18px; }
+      section { padding: 35px 0; }
+      .project-form { padding: 17px; }
+      .nav-links { gap: 10px; }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="header">
-    <a class="logo" href="index.html">
-      نادي <span>الابتكار</span>
-    </a>
-<button
-  class="menu-toggle"
-  type="button"
-  aria-label="فتح القائمة"
-  aria-controls="main-navigation"
-  aria-expanded="false">
-  <span aria-hidden="true">☰</span>
-</button>
-<nav class="nav" id="main-navigation" aria-label="التنقل الرئيسي">
-  <a href="index.html">الرئيسية</a>
-  <a href="about.html">عن النادي</a>
-  <a href="teams.html">الفرق</a>
-  <a href="events.html">الفعاليات</a>
-  <a class="active" href="projects.html" aria-current="page">المشاريع</a>
-  <a href="contact.html">تواصل معنا</a>
-  <a class="nav-cta" href="join.html">انضم إلى النادي</a>
-</nav>
-  </header>
-  <main>
-    <section class="page-hero" aria-labelledby="page-title">
-      <span class="eyebrow">أفكار تتحول إلى حلول</span>
-      <h1 id="page-title">مساحة لمشاريع المستقبل</h1>
-      <p>
-        نعرض هنا مجالات المشاريع المقترحة، ونفتح المجال للطلاب
-        لاقتراح أفكار جديدة تسهم في الابتكار وريادة الأعمال.
-      </p>
-    </section>
-<section class="section" aria-labelledby="projects-title">
-  <h2 id="projects-title">مجالات المشاريع</h2>
-  <div class="grid grid-2">
-    <article class="card">
-      <img
-        class="card-image"
-        src="IMG_1948.JPG"
-        alt="صورة مرتبطة بالابتكار"
-        loading="lazy">
-      <span class="tag">أفكار طلابية</span>
-      <h3>مختبر الأفكار</h3>
-      <p>
-        جمع الأفكار وتحديد المشكلة المستهدفة وبناء تصور أولي للحل،
-        ثم تطوير الفكرة بالتعاون مع أعضاء النادي.
-      </p>
-    </article>
-    <article class="card">
-      <img
-        class="card-image"
-        src="IMG_0364.JPG"
-        alt="صورة مرتبطة بالجامعة والأنشطة الابتكارية"
-        loading="lazy">
-      <span class="tag">حلول تقنية</span>
-      <h3>نماذج أولية رقمية</h3>
-      <p>
-        تعاون الطلاب على تصميم نماذج أولية لتطبيقات
-        ومبادرات رقمية تعالج احتياجات حقيقية.
-      </p>
-    </article>
-    <article class="card">
-      <div class="icon" aria-hidden="true">🌱</div>
-      <span class="tag">أثر مجتمعي</span>
-      <h3>مبادرات مجتمعية</h3>
-      <p>
-        ابتكار حلول ومبادرات للتحديات المتعلقة بالمجتمع
-        والبيئة والتعلم، بما يعزز الأثر الإيجابي.
-      </p>
-    </article>
-    <article class="card">
-      <div class="icon" aria-hidden="true">📈</div>
-      <span class="tag">ريادة أعمال</span>
-      <h3>مشاريع ريادية</h3>
-      <p>
-        دراسة احتياجات المستفيدين وتطوير نماذج عمل
-        للأفكار الواعدة، والتعرّف على فرص تحويلها إلى مشاريع.
-      </p>
-    </article>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">نادي الابتكار وريادة الأعمال</a>
+
+    <nav class="nav-links" aria-label="القائمة الرئيسية">
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">عن النادي</a>
+      <a href="teams.html">الفرق</a>
+      <a href="events.html">الفعاليات</a>
+      <a class="active" href="projects.html">المشاريع</a>
+      <a href="contact.html">تواصل معنا</a>
+      <a href="join.html">انضم إلى النادي</a>
+    </nav>
   </div>
-  <p class="notice" role="note">
-    تنويه: هذه أمثلة لمجالات مقترحة وليست مشاريع منفذة أو معتمدة.
-    ستُحدّث الصفحة بإضافة المشاريع الفعلية ومعلومات فرقها
-    بعد اعتمادها.
-  </p>
-</section>
-<section class="cta-section" aria-labelledby="idea-title">
-  <h2 id="idea-title">لديك فكرة مشروع؟</h2>
-  <p>
-    شاركنا فكرتك لتكون بداية تعاون جديد في نادي الابتكار وريادة الأعمال.
-  </p>
-  <a class="btn btn-light" href="join.html">قدّم فكرتك</a>
-</section>
-  </main>
-  <footer class="footer">
-    <a class="logo footer-logo" href="index.html">
-      نادي الابتكار وريادة الأعمال
-    </a>
-    <p>معًا نحو أفكار مبتكرة وأثر مستدام.</p>
-    <small>© 2026 نادي الابتكار وريادة الأعمال</small>
-  </footer>
-  <script src="script.js"></script>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">من الفكرة إلى الأثر</span>
+      <h1>مساحة تصنع فيها أفكارك المستقبل</h1>
+      <p>
+        اكتشف المشاريع الابتكارية، وشارك مهاراتك، وابحث عن شركاء يشاركونك
+        الطموح لتحويل الأفكار إلى مبادرات ومشروعات قابلة للتطوير.
+      </p>
+      <a class="btn btn-light" href="#submit-project">شارك بفكرتك</a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <h2>معرض المشاريع</h2>
+        <p>أمثلة توضيحية لمشروعات يمكن تطويرها داخل مجتمع النادي.</p>
+      </div>
+
+      <div class="filters" aria-label="تصفية المشاريع">
+        <button class="filter-btn active" type="button" data-filter="all">جميع المشاريع</button>
+        <button class="filter-btn" type="button" data-filter="progress">قيد التطوير</button>
+        <button class="filter-btn" type="button" data-filter="done">مكتملة كنموذج</button>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card" data-status="progress">
+          <div class="project-art" aria-hidden="true">💡</div>
+          <div class="project-content">
+            <span class="tag">ابتكار</span>
+            <span class="status">قيد التطوير — مثال</span>
+            <h3>منصة توليد الأفكار</h3>
+            <p>تصور لمنصة تساعد الطلاب على تنظيم الأفكار وتحديد المشكلة والحلول المحتملة.</p>
+            <button class="btn btn-primary choose-project" type="button" data-project="منصة توليد الأفكار">أرغب في المشاركة</button>
+          </div>
+        </article>
+
+        <article class="project-card" data-status="progress">
+          <div class="project-art" aria-hidden="true">📊</div>
+          <div class="project-content">
+            <span class="tag">تقنية</span>
+            <span class="status">قيد التطوير — مثال</span>
+            <h3>لوحة مؤشرات جامعية</h3>
+            <p>تصور لوحة بيانات تعرض مؤشرات افتراضية لدعم فهم المعلومات واتخاذ القرارات.</p>
+            <button class="btn btn-primary choose-project" type="button" data-project="لوحة مؤشرات جامعية">أرغب في المشاركة</button>
+          </div>
+        </article>
+
+        <article class="project-card" data-status="done">
+          <div class="project-art" aria-hidden="true">🌱</div>
+          <div class="project-content">
+            <span class="tag">استدامة</span>
+            <span class="status done">نموذج تصوري</span>
+            <h3>مبادرة بيئة جامعية</h3>
+            <p>تصور لمبادرة توعوية تشجع على الممارسات المستدامة والعمل الجماعي.</p>
+            <button class="btn btn-primary choose-project" type="button" data-project="مبادرة بيئة جامعية">أرغب في المشاركة</button>
+          </div>
+        </article>
+
+        <article class="project-card" data-status="progress">
+          <div class="project-art" aria-hidden="true">🤖</div>
+          <div class="project-content">
+            <span class="tag">ذكاء اصطناعي</span>
+            <span class="status">قيد التطوير — مثال</span>
+            <h3>مساعد التعلم الذكي</h3>
+            <p>فكرة أداة تساعد الطالب على تنظيم المهام والمراجعة والتخطيط للتعلم.</p>
+            <button class="btn btn-primary choose-project" type="button" data-project="مساعد التعلم الذكي">أرغب في المشاركة</button>
+          </div>
+        </article>
+
+        <article class="project-card" data-status="done">
+          <div class="project-art" aria-hidden="true">🎓</div>
+          <div class="project-content">
+            <span class="tag">تطوير مهني</span>
+            <span class="status done">نموذج تصوري</span>
+            <h3>دليل المهارات الجامعية</h3>
+            <p>تصور لدليل يجمع المهارات والدورات والمصادر المفيدة للطلاب.</p>
+            <button class="btn btn-primary choose-project" type="button" data-project="دليل المهارات الجامعية">أرغب في المشاركة</button>
+          </div>
+        </article>
+
+        <article class="project-card" data-status="progress">
+          <div class="project-art" aria-hidden="true">🤝</div>
+          <div class="project-content">
+            <span class="tag">عمل جماعي</span>
+            <span class="status">قيد التطوير — مثال</span>
+            <h3>شبكة تبادل المهارات</h3>
+            <p>فكرة تربط الطلاب الراغبين في تبادل المعرفة والتعاون في المشروعات.</p>
+            <button class="btn btn-primary choose-project" type="button" data-project="شبكة تبادل المهارات">أرغب في المشاركة</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <h2>كيف يساعدك النادي؟</h2>
+        <p>مساحات مقترحة للتعلم والتعاون وتحويل الأفكار إلى خطوات عملية.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="emoji" aria-hidden="true">🧩</div>
+          <h3>ابحث عن فريق</h3>
+          <p>تعرّف على أشخاص لديهم اهتمامات متقاربة ومهارات تكمل فكرتك.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="emoji" aria-hidden="true">🛠️</div>
+          <h3>طوّر مهاراتك</h3>
+          <p>استكشف مجالات مثل البرمجة، والتصميم، وتحليل البيانات، وإدارة المشاريع.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="emoji" aria-hidden="true">🚀</div>
+          <h3>استعد للمنافسات</h3>
+          <p>نظّم فكرتك واستكشف فرص المشاركة في الهاكاثونات والمسابقات المناسبة.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ideas" id="idea-lab">
+    <div class="container">
+      <div class="section-heading">
+        <h2>مختبر الأفكار</h2>
+        <p>اختر فكرة مبدئية لتكون نقطة انطلاق، أو اقترح فكرتك الخاصة.</p>
+      </div>
+
+      <div class="idea-list">
+        <button class="idea-option" type="button" data-idea="تطبيق لتنظيم الوقت الجامعي">
+          <strong>📅 تنظيم الوقت الجامعي</strong>
+          <small>أداة لتخطيط المهام والمواعيد الدراسية.</small>
+        </button>
+
+        <button class="idea-option" type="button" data-idea="منصة تعليم المهارات الرقمية">
+          <strong>💻 المهارات الرقمية</strong>
+          <small>مساحة لتبادل الموارد والخبرات التقنية.</small>
+        </button>
+
+        <button class="idea-option" type="button" data-idea="مبادرة للاستدامة">
+          <strong>🌿 الاستدامة</strong>
+          <small>مبادرة تعزز الوعي والممارسات المستدامة.</small>
+        </button>
+
+        <button class="idea-option" type="button" data-idea="مساعد ذكي للطلاب">
+          <strong>🧠 مساعد ذكي للطلاب</strong>
+          <small>تصور لأداة تدعم تنظيم التعلم.</small>
+        </button>
+      </div>
+
+      <p style="text-align:center; margin-top:20px;">
+        <button class="btn btn-primary" id="use-idea" type="button">استخدم الفكرة المختارة</button>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <h2>من الفكرة إلى النموذج الأولي</h2>
+        <p>ابدأ بخطوات بسيطة تساعدك على توضيح مشروعك.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="emoji" aria-hidden="true">01</div>
+          <h3>حدّد المشكلة</h3>
+          <p>ما الحاجة التي تريد معالجتها؟ ومن الأشخاص الذين سيستفيدون من الحل؟</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="emoji" aria-hidden="true">02</div>
+          <h3>صمّم الحل</h3>
+          <p>ارسم تصورًا أوليًا أو جهّز نموذجًا بسيطًا يوضح طريقة عمل الفكرة.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="emoji" aria-hidden="true">03</div>
+          <h3>اختبر وطوّر</h3>
+          <p>اجمع الملاحظات، وراجع الافتراضات، وحدّد التحسينات التالية.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" id="submit-project">
+    <div class="container">
+      <div class="section-heading">
+        <h2>شارك بمشروعك أو فكرتك</h2>
+        <p>املأ النموذج التجريبي لتوضيح فكرتك واحتياجاتك.</p>
+      </div>
+
+      <form class="project-form" id="project-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="student-name">الاسم</label>
+            <input id="student-name" name="student-name" type="text" placeholder="اكتب اسمك" required>
+          </div>
+
+          <div class="field">
+            <label for="student-email">البريد الإلكتروني</label>
+            <input id="student-email" name="student-email" type="email" placeholder="example@email.com" required>
+          </div>
+
+          <div class="field">
+            <label for="project-name">اسم المشروع أو الفكرة</label>
+            <input id="project-name" name="project-name" type="text" placeholder="اسم مختصر للفكرة" required>
+          </div>
+
+          <div class="field">
+            <label for="project-category">مجال المشروع</label>
+            <select id="project-category" name="project-category" required>
+              <option value="">اختر المجال</option>
+              <option>تقنية وبرمجة</option>
+              <option>ذكاء اصطناعي وبيانات</option>
+              <option>ريادة أعمال</option>
+              <option>تعليم وتطوير مهني</option>
+              <option>استدامة ومجتمع</option>
+              <option>مجال آخر</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="project-stage">مرحلة المشروع</label>
+            <select id="project-stage" name="project-stage" required>
+              <option value="">اختر المرحلة</option>
+              <option>فكرة أولية</option>
+              <option>قيد التخطيط</option>
+              <option>قيد التنفيذ</option>
+              <option>نموذج أولي جاهز</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="project-need">ما الذي تحتاج إليه؟</label>
+            <select id="project-need" name="project-need" required>
+              <option value="">اختر احتياجك</option>
+              <option>البحث عن فريق</option>
+              <option>تطوير المهارات</option>
+              <option>تطوير النموذج الأولي</option>
+              <option>توجيه وإرشاد</option>
+              <option>عرض الفكرة ومناقشتها</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="project-description">وصف الفكرة</label>
+            <textarea id="project-description" name="project-description" placeholder="ما المشكلة التي تعالجها فكرتك؟ وما الحل الذي تقترحه؟" required></textarea>
+          </div>
+        </div>
+
+        <div class="notice">
+          تنبيه: هذا نموذج واجهة تجريبية فقط. لن تُرسل البيانات إلى جهة خارجية ولن تُحفظ في قاعدة بيانات.
+        </div>
+
+        <button class="btn btn-primary" type="submit">معاينة تقديم المشروع</button>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>كل مشروع كبير يبدأ بخطوة</h2>
+      <p>ابدأ بفكرة، وابحث عن المعرفة، وشارك الآخرين رحلة التطوير.</p>
+      <a class="btn btn-light" href="join.html">تعرّف على الانضمام إلى النادي</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>نادي الابتكار وريادة الأعمال — الجامعة الإسلامية بمنيسوتا</p>
+  <p>مساحة للأفكار، والتعاون، والتعلّم المستمر.</p>
+</footer>
+
+<script>
+  // تصفية المشاريع حسب الحالة
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+
+      filterButtons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+
+      projectCards.forEach((card) => {
+        card.hidden = filter !== "all" && card.dataset.status !== filter;
+      });
+    });
+  });
+
+  // اختيار مشروع وتعبئة اسمه في النموذج
+  const projectNameInput = document.getElementById("project-name");
+
+  document.querySelectorAll(".choose-project").forEach((button) => {
+    button.addEventListener("click", () => {
+      projectNameInput.value = button.dataset.project;
+      document.getElementById("submit-project").scrollIntoView({
+        behavior: "smooth"
+      });
+      projectNameInput.focus({ preventScroll: true });
+    });
+  });
+
+  // اختيار فكرة من مختبر الأفكار
+  const ideaOptions = document.querySelectorAll(".idea-option");
+  let selectedIdea = "";
+
+  ideaOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      ideaOptions.forEach((item) => item.classList.remove("selected"));
+      option.classList.add("selected");
+      selectedIdea = option.dataset.idea;
+    });
+  });
+
+  document.getElementById("use-idea").addEventListener("click", () => {
+    if (!selectedIdea) {
+      alert("اختَر فكرة أولًا من مختبر الأفكار.");
+      return;
+    }
+
+    projectNameInput.value = selectedIdea;
+    document.getElementById("submit-project").scrollIntoView({
+      behavior: "smooth"
+    });
+    projectNameInput.focus({ preventScroll: true });
+  });
+
+  // النموذج تجريبي ولا يرسل أو يحفظ بيانات
+  document.getElementById("project-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    document.getElementById("form-message").textContent =
+      "اكتملت المعاينة بنجاح. لم يتم إرسال البيانات أو حفظها. عند ربط النموذج بخدمة مناسبة يمكن تفعيل الإرسال الفعلي.";
+
+  });
+</script>
+
 </body>
 </html>
